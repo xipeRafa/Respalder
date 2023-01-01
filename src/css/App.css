@@ -50,8 +50,8 @@
 
 .formInfoToFind>div>input{
 	width: 360px;
-	/*box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;*/
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+/*	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;*/
 }
 
 label{
@@ -267,12 +267,14 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 .btn-buscar{
 	border: none;
 	width: 80px;
-	height: 37px;
-	padding-bottom:8px ;
-	padding-top:4.5px ;
+	height: 37.5px;
+	padding-bottom:9px ;
+	padding-top:4.4px ;
 	margin-left: 2px;
-	border-radius: 2px;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	border-radius: 6px;
+/*	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;*/
+/*		box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;*/
+
 }
 
 

@@ -85,13 +85,12 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
             setTimeout(()=>{
                 setEmptyState(false)
-             },2200) 
+             },300) 
             
             if(arrParroquiaState.length>=1){
                 setEmptyState(false)
             }else{
-                setEmptyState('Buscando...')
-                
+                setEmptyState('Buscando...')  
             }  
 
         }
@@ -159,7 +158,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
                                     <input type="search"  id='avatar1' name='nombreBautismo' className='w-80' value={viewNameFinder}
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
-                                            <button className='btn-buscar' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
+                                            <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
 
 
