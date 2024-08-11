@@ -725,7 +725,7 @@ img{width: 100%;}
   input[type="textarea"]:focus,
   input[type="date"]:focus,
   input[type="time"]:focus,
-  input[type="file"],
+  input[type="file"]:focus,
   textarea:focus,
   select:focus {
     border: 1px solid #33c3f0;
