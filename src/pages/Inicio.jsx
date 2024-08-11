@@ -173,7 +173,16 @@ export default function Inicio({arr, setGetArr, getArr, UpdateByIdInventario}) {
 
                                    
                             </p> 
-                            : <p>Buscar</p>
+                            : <div className='formInfoToFind'>
+                                <div>
+                                    <label for="avatar1">Buscar con Nombre:</label>
+                                    <input type="text" id='avatar1' placeholder='Nombre' />
+                                </div>
+                                <div>
+                                    <label for="avatar2">Buscar con Fecha:</label>
+                                    <input type="date" id='avatar2' placeholder='Nombre' />
+                                </div>
+                            </div>
                 }
         </>
     );

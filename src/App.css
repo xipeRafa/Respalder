@@ -22,9 +22,21 @@
 	margin: 1em 2em;
 }
 
+.formInfoToFind{
+	margin: 50px 0;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
 
+.formInfoToFind>div>input{
+	width: 300px;
+}
 
-
+label{
+	color: #444;
+	font-weight: 100!important;
+}
 
 
 
