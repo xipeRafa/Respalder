@@ -92,10 +92,12 @@ export default function App() {
     <div className='containerApp'>
     
       <Navbar />
+
+      <h3>Registro Parroquial</h3>
         
       
       <Routes>
-        <Route path="/adminPolanco" exact element={<Inicio arr={arr} setGetArr={setGetArr} getArr={getArr} UpdateByIdInventario={UpdateByIdInventario}/>} />
+        <Route path="/adminPolanco" element={<Inicio arr={arr} setGetArr={setGetArr} getArr={getArr} UpdateByIdInventario={UpdateByIdInventario}/>} />
 
         <Route path="/adminPolanco/inventario" element={<Inventario arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
          <Route path="/adminPolanco/inventario/:id" element={<Inventario arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />

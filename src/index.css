@@ -643,7 +643,7 @@ img{width: 100%;}
   input[type="submit"]:focus,
   input[type="reset"]:focus,
   input[type="button"]:focus {
-    color: #333;
+    color: rgba(33, 67, 100);
     border-color: #1eaedb;
     outline: 0;
   }

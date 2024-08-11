@@ -24,13 +24,14 @@ export default function Navbar() {
 
   return (
 <div className="navBar3">
+
     <div onClick={()=>setIsActive(!isActive)}  className="hamburger" >
+
       <div className="menu-bar">
         <div className="uno" />
         <div className="dos" />
         <div className="tres"/>
       </div>
-
 
       <p className='menuIcons'>{isActive ? <b className='menuIcon'>MENU</b> : <b className='menuIconX'>✘</b>}</p>
 
@@ -38,8 +39,7 @@ export default function Navbar() {
 
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
     
-
-        <NavLink to="/adminPolanco"             > Bautismos      </NavLink>
+        <NavLink style={{backgroundColor:'transparent'}} to="/adminPolanco"             > Bautismos      </NavLink>
         <NavLink to="/adminPolanco/inventario"   > Confirmaciones </NavLink>
         <NavLink to="/adminPolanco/ordersHillo"  > Comuniones</NavLink>
 
@@ -51,7 +51,7 @@ export default function Navbar() {
      
     </div>  
 
-      </div>
+</div>
   );
 }
 

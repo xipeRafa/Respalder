@@ -17,7 +17,7 @@ export default function ProductoBajos({ arr, setGetArr, getArr }) {
         setGetArr(!getArr)
     },[])
 
-   const[state, setState]=useState(false)
+   const[state, setState]=useState(true)
 
 
     return (

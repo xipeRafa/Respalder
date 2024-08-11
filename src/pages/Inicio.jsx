@@ -136,7 +136,7 @@ export default function Inicio({arr, setGetArr, getArr, UpdateByIdInventario}) {
 
 
 
-        const[state, setState]=useState(false)
+        const[state, setState]=useState(true)
 
 
 
@@ -149,7 +149,7 @@ export default function Inicio({arr, setGetArr, getArr, UpdateByIdInventario}) {
         <>
 
            <div className='ButtonsNuevoBuscar'>
-                <button onClick={()=>{setState(true)}} >Nuevo Bautismo</button>
+                <button onClick={()=>{setState(true)}}>Nuevo Bautismo</button>
                 <button onClick={()=>{setState(false)}}>Buscar</button>
 
            </div> 
