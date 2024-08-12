@@ -2,12 +2,13 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate} from 'react-router-dom';
 
-import { getDocs, collection, updateDoc, doc } from 'firebase/firestore'
+import { getDocs, collection, updateDoc, doc, addDoc } from 'firebase/firestore'
+import { ref, uploadBytes, getBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 import './App.css'
 
 
-import firestoreDB from './firebase/firebaseConfig'
+import { firestoreDB, storageDocs } from './firebase/firebaseConfig';
 
 
 import Bautisos from './pages/Bautisos';
@@ -58,7 +59,39 @@ export default function App() {
              console.error(err)
         })
 
-    }, [getArr])  
+    }, [getArr]) 
+
+
+
+   
+
+
+
+    const postRegister = (selectedFile, postBody) => {
+
+        console.log(selectedFile, selectedFile.name)
+
+        const postCollection = collection(firestoreDB, fireBaseCollection);
+
+        const filesFolderRef = ref(storageDocs, `${fireBaseCollection}-Files/${selectedFile?.name}`)
+
+        uploadBytes(filesFolderRef, selectedFile)
+            .then(() => {
+
+                getDownloadURL(filesFolderRef).then((url) => {
+                    postBody.fileName = selectedFile.name
+                    postBody.fileUrl = url
+                    addDoc(postCollection, postBody)
+                })
+
+            })
+            .catch((error) => { 
+                console.log('postRegister Error, App,jsx, linea 82')
+                console.log(error)
+            })
+
+
+    }
 
 
 
@@ -100,7 +133,7 @@ export default function App() {
         }*/}
       
       <Routes>
-        <Route path="/" element={<Bautisos arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="/confirmaciones" element={<Confirmaciones arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/comuniones" element={<Comuniones arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
