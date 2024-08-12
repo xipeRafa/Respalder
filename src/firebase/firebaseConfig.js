@@ -10,13 +10,13 @@ import { getFirestore } from 'firebase/firestore'
 
 const app = firebase.initializeApp({
 
-     apiKey: "AIzaSyAp9XrnMQ2kd-L8I2kVOZJctYBAT-h66tM",
-     authDomain: "polanco-25ef9.firebaseapp.com",
-     projectId: "polanco-25ef9",
-     storageBucket: "polanco-25ef9.appspot.com",
-     messagingSenderId: "804200542961",
-     appId: "1:804200542961:web:010ee2a2d4e45ec098af50"
-  
+     apiKey: "AIzaSyBHgG4mwWSEUBLPS1p2XFtaC8GwPIv2xN8",
+     authDomain: "arquidiocesishermosillo-776dd.firebaseapp.com",
+     projectId: "arquidiocesishermosillo-776dd",
+     
+     storageBucket: "arquidiocesishermosillo-776dd.appspot.com",
+     messagingSenderId: "767127814821",
+     appId: "1:767127814821:web:6c159d62075bcd1271c34c"
 
 });
 
@@ -27,5 +27,5 @@ se.firestore().doc();
 getDoc(docRef); */
 
 
-const db = getFirestore(app)
-export default db
+const firestoreDB = getFirestore(app)
+export default firestoreDB

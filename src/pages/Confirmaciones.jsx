@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 
 
 
-export default function Confirmaciones({ arr, setGetArr, getArr }) {
+export default function Confirmaciones({arrParroquiaState, setGetArr, getArr}) {
 
-console.log(arr)
+
 
     const formateador = new Intl.DateTimeFormat("es-MX", { dateStyle: 'long', timeStyle: 'short' });
   
@@ -15,26 +15,15 @@ console.log(arr)
 
 
 
-    const [valueState, setValueState] = useState('')
-
-    const handleSearch = (e) => {
-        const { value } = e.target
-        setValueState(value)
-    }
 
 
 
-    useEffect(()=>{
-        setGetArr(!getArr)
-    },[])
+    // useEffect(()=>{
+    //     setGetArr(!getArr)
+    // },[])
 
 
-      if(valueState.length > 3){
-        arr = arr.filter(el => el.id == valueState.trim())
-      }else{
-        arr = arr
-      }      
-
+   
 
 
 
@@ -57,7 +46,7 @@ console.log(arr)
     return (
         <>
 
-               <div className='ButtonsNuevoBuscar'>
+            <div className='ButtonsNuevoBuscar'>
                 <button onClick={()=>{setState(true)}} >Nueva Confirmacion</button>
                 <button onClick={()=>{setState(false)}}>Buscar</button>
 

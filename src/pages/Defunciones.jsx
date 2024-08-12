@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 
 
-export default function Defunciones({ arr, setGetArr, getArr }) {
+export default function Defunciones({arrParroquiaState, setGetArr, getArr}) {
 
    
     const formateador = new Intl.DateTimeFormat("es-MX", { dateStyle: 'long', timeStyle: 'short' });
@@ -13,9 +13,9 @@ export default function Defunciones({ arr, setGetArr, getArr }) {
     }; 
 
 
-     useEffect(()=>{
-        setGetArr(!getArr)
-    },[])
+    //  useEffect(()=>{
+    //     setGetArr(!getArr)
+    // },[])
 
    const[state, setState]=useState(true)
 

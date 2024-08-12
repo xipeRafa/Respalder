@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 
 
 
-export default function Parroquia({ arr, setGetArr, getArr }) {
+export default function Parroquia({arrParroquiaState, setGetArr, getArr}) {
 
 
    
@@ -13,9 +13,9 @@ export default function Parroquia({ arr, setGetArr, getArr }) {
           return formateador.format(new Date(milisegundos));
     }; 
 
-    useEffect(()=>{
-        setGetArr(!getArr)
-    },[])
+    // useEffect(()=>{
+    //     setGetArr(!getArr)
+    // },[])
 
 
 

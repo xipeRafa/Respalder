@@ -2,19 +2,19 @@
 import { useEffect } from 'react';
 
 
-export default function Usuarios({ arrOrders, setGetArrOrders, getArrOrders, arr, setGetArr, getArr}) {
+export default function Usuarios({arrParroquiaState, setGetArr, getArr}) {
 
 
 
-     useEffect(()=>{
-        setGetArrOrders(!getArrOrders)
-         setGetArr(!getArr)
-    },[])
+    // useEffect(()=>{
+    //     setGetArrOrders(!getArrOrders)
+    //      setGetArr(!getArr)
+    // },[])
 
 
 
 
-        const formateador = new Intl.DateTimeFormat("es-MX", {
+    const formateador = new Intl.DateTimeFormat("es-MX", {
         dateStyle: "long",
         timeStyle: "short",
     });

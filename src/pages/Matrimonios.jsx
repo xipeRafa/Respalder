@@ -5,15 +5,14 @@ import { useEffect, useState } from 'react';
 
 
 
-export default function Matrimonios({ arrOrders, setGetArrOrders, getArrOrders }) {
-
-        const pendientes = arrOrders.filter((el) => el.city === "san carlos").filter((el) => el.takenByCustomer === false ).length
-        const entregados = arrOrders.filter((el) => el.city === "san carlos").filter((el) => el.takenByCustomer === true ).length
+export default function Matrimonios({arrParroquiaState, setGetArr, getArr}) {
 
 
-     useEffect(()=>{
-        setGetArrOrders(!getArrOrders)
-    },[])
+
+
+    //  useEffect(()=>{
+    //     setGetArrOrders(!getArrOrders)
+    // },[])
 
 
 
