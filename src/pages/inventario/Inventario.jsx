@@ -69,6 +69,7 @@ console.log(arr)
                     state ? <p>
                                     
                                 <div className='formInfoToSave'>
+                                    <p>Respaldar Acta de Confirmacion</p>
                                     <input type="text" placeholder='Nombre' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}

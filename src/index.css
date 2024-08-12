@@ -765,13 +765,19 @@ img{width: 100%;}
 
   }
 
+  @media(max-width:1000px){
+      input[type="file"]{
+        margin: 1em 0;
+      }
+  }
+
   input::file-selector-button {
     height: 25px;
     font-weight: 100;
     border: thin solid grey;
     border-radius: 3px;
     margin-right: 20px;
-     background-color: #fff;
+    background-color: #fff;
   }
 
   /* Lists

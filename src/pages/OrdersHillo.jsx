@@ -37,6 +37,7 @@ export default function OrdersHillo({ arrOrders, setGetArrOrders, getArrOrders }
                     state ? <p>
                                     
                                 <div className='formInfoToSave'>
+                                    <p>Respaldar Primera Comunion</p>
                                     <input type="text" placeholder='Nombre' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}

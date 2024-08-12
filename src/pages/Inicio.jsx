@@ -157,13 +157,14 @@ export default function Inicio({arr, setGetArr, getArr, UpdateByIdInventario}) {
 
                 {
                     state ? <p>
-                                    
+                                   
                                 <div className='formInfoToSave'>
+                                    <p>Respaldar FE de Bautismo</p> 
                                     <input type="text" placeholder='Nombre' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
                                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
-                                    <button className='button-primary'>
+                                    <button className='button-primary guardar'>
                                         GUARDAR
                                     </button>
                                 </div>    

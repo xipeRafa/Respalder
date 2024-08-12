@@ -49,6 +49,7 @@ export default function OrdersSanCarlos({ arrOrders, setGetArrOrders, getArrOrde
                     state ? <p>
                                     
                                 <div className='formInfoToSave'>
+                                    <p>Respaldar Acta de Matrimonio</p>
                                     <input type="text" placeholder='Nombre' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}

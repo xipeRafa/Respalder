@@ -93,7 +93,7 @@ export default function App() {
     
       <Navbar />
 
-      <h3>Registro Parroquial</h3>
+      <h3>REGISTRO PARROQUIAL</h3>
         
       
       <Routes>

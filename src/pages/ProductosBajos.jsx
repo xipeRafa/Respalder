@@ -33,6 +33,7 @@ export default function ProductoBajos({ arr, setGetArr, getArr }) {
                     state ? <p>
                                     
                                 <div className='formInfoToSave'>
+                                    <p>Respaldar Acta de Defuncion</p>
                                     <input type="text" placeholder='Nombre' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
