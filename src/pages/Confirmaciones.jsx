@@ -70,6 +70,7 @@ console.log(arr)
                                 <div className='formInfoToSave'>
                                     <p>Respaldar Acta de Confirmacion</p>
                                     <input type="text" placeholder='Nombre' />
+                                    <input type="date" />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
                                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />

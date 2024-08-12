@@ -161,6 +161,7 @@ export default function Bautisos({arr, setGetArr, getArr, UpdateByIdInventario})
                                 <div className='formInfoToSave'>
                                     <p>Respaldar FE de Bautismo</p> 
                                     <input type="text" placeholder='Nombre' />
+                                    <input type="date" placeholder='Fecha de Bautismo' />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
                                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />

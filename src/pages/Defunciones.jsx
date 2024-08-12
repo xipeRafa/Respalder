@@ -35,6 +35,7 @@ export default function Defunciones({ arr, setGetArr, getArr }) {
                                 <div className='formInfoToSave'>
                                     <p>Respaldar Acta de Defuncion</p>
                                     <input type="text" placeholder='Nombre' />
+                                    <input type="date" />
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
                                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />

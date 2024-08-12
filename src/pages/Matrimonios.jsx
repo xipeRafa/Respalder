@@ -53,6 +53,8 @@ export default function Matrimonios({ arrOrders, setGetArrOrders, getArrOrders }
                                     <input type="text" placeholder='Nombre del Esposo' />
                                     <input type="text" placeholder='Nombre de la Esposa' />
 
+                                    <input type="date" />
+
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
                                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
                                     <button className='button-primary'>
@@ -67,10 +69,10 @@ export default function Matrimonios({ arrOrders, setGetArrOrders, getArrOrders }
                                     <label htmlFor="avatar1">Buscar con Nombre del Esposo:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre...' />
                                 </div>
-                                <div>
+                               {/* <div>
                                     <label htmlFor="avatar1">Buscar con Nombre de la Esposa:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre...' />
-                                </div>
+                                </div>*/}
                                 <div>
                                     <label htmlFor="avatar2">Buscar con Fecha:</label>
                                     <input type="date" id='avatar2'  />
