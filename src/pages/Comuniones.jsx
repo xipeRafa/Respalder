@@ -27,7 +27,7 @@ export default function Comuniones({ arrOrders, setGetArrOrders, getArrOrders })
     return (
         <>
                 <div className='ButtonsNuevoBuscar'>
-                <button onClick={()=>{setState(true)}} >Primera Comunion</button>
+                <button onClick={()=>{setState(true)}} >Primera Comunión</button>
                 <button onClick={()=>{setState(false)}}>Buscar</button>
 
            </div> 
@@ -37,7 +37,7 @@ export default function Comuniones({ arrOrders, setGetArrOrders, getArrOrders })
                     state ? 
                                     
                                 <div className='formInfoToSave'>
-                                    <p>Respaldar Primera Comunion</p>
+                                    <p>Respaldar Acta de Primera Comunión</p>
                                     <input type="text" placeholder='Nombre' />
                                     <input type="date" />
 
@@ -52,11 +52,11 @@ export default function Comuniones({ arrOrders, setGetArrOrders, getArrOrders })
 
                             <div className='formInfoToFind'>
                                 <div>
-                                    <label htmlFor="avatar1">Buscar con Nombre:</label>
+                                    <label htmlFor="avatar1">Buscar Primera Comunión con Nombre:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre' />
                                 </div>
                                 <div>
-                                    <label htmlFor="avatar2">Buscar con Fecha:</label>
+                                    <label htmlFor="avatar2">Buscar Primera Comunión con Fecha:</label>
                                     <input type="date" id='avatar2' placeholder='Nombre' />
                                 </div>
                             </div>

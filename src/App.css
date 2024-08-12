@@ -99,6 +99,15 @@ label{
 }
 
 
+.registroParroquial-h3{
+	font-size: 2em;
+}
+
+@media(max-width:1000px){
+	.registroParroquial-h3{
+		font-size: 1.6em;
+	}
+}
 
 
 

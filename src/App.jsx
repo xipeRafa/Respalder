@@ -93,8 +93,12 @@ export default function App() {
     
       <Navbar />
 
-      <h3>REGISTRO PARROQUIAL</h3>
-        
+      <h3 className='registroParroquial-h3'>REGISTRO PARROQUIAL</h3>
+       {/* {
+            location.pathname == '/'    ? 
+                                            <b className=''>Bautismos</b> 
+                                        :   <h5>{location.pathname.substring(1).replace(/\b\w/g, l => l.toUpperCase())}</h5>
+        }*/}
       
       <Routes>
         <Route path="/" element={<Bautisos arr={arr} setGetArr={setGetArr} getArr={getArr} UpdateByIdInventario={UpdateByIdInventario}/>} />

@@ -51,7 +51,7 @@ export default function Matrimonios({ arrOrders, setGetArrOrders, getArrOrders }
                                 <div className='formInfoToSave'>
                                     <p>Respaldar Acta de Matrimonio</p>
                                     <input type="text" placeholder='Nombre del Esposo' />
-                                    <input type="text" placeholder='Nombre de la Esposa' />
+                                    {/*<input type="text" placeholder='Nombre de la Esposa' />*/}
 
                                     <input type="date" />
 

@@ -68,7 +68,7 @@ console.log(arr)
                     state ? 
                                     
                                 <div className='formInfoToSave'>
-                                    <p>Respaldar Acta de Confirmacion</p>
+                                    <p>Respaldar Acta de Confirmación</p>
                                     <input type="text" placeholder='Nombre' />
                                     <input type="date" />
 
@@ -83,11 +83,11 @@ console.log(arr)
 
                             <div className='formInfoToFind'>
                                 <div>
-                                    <label htmlFor="avatar1">Buscar con Nombre:</label>
+                                    <label htmlFor="avatar1">Buscar Acta de Confirmación con Nombre:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre' />
                                 </div>
                                 <div>
-                                    <label htmlFor="avatar2">Buscar con Fecha:</label>
+                                    <label htmlFor="avatar2">Buscar Acta de Confirmación con Fecha:</label>
                                     <input type="date" id='avatar2' placeholder='Nombre' />
                                 </div>
                             </div>

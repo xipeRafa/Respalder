@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 export default function Bautisos({arr, setGetArr, getArr, UpdateByIdInventario}) {
 
 
+
+
+
     const formateador = new Intl.DateTimeFormat("es-MX", {
         dateStyle: "long",
         timeStyle: "short",
@@ -175,11 +178,11 @@ export default function Bautisos({arr, setGetArr, getArr, UpdateByIdInventario})
 
                             <div className='formInfoToFind'>
                                 <div>
-                                    <label htmlFor="avatar1">Buscar con Nombre:</label>
+                                    <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre' />
                                 </div>
                                 <div>
-                                    <label htmlFor="avatar2">Buscar con Fecha:</label>
+                                    <label htmlFor="avatar2">Buscar Bautismo con Fecha:</label>
                                     <input type="date" id='avatar2' placeholder='Nombre' />
                                 </div>
                             </div>
