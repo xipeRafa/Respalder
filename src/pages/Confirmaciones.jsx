@@ -1,10 +1,9 @@
 
 import { useEffect, useState } from 'react';
 
-import './inventario.css'
 
 
-export default function Inventario({ arr, setGetArr, getArr }) {
+export default function Confirmaciones({ arr, setGetArr, getArr }) {
 
 console.log(arr)
 
@@ -52,7 +51,7 @@ console.log(arr)
 
 
 
-  const[state, setState]=useState(false)
+  const[state, setState]=useState(true)
 
 
     return (
@@ -66,7 +65,7 @@ console.log(arr)
 
 
                 {
-                    state ? <p>
+                    state ? 
                                     
                                 <div className='formInfoToSave'>
                                     <p>Respaldar Acta de Confirmacion</p>
@@ -78,19 +77,16 @@ console.log(arr)
                                         GUARDAR
                                     </button>
                                 </div>    
+ 
+                            : 
 
-
-
-
-                                   
-                            </p> 
-                            : <div className='formInfoToFind'>
+                            <div className='formInfoToFind'>
                                 <div>
-                                    <label for="avatar1">Buscar con Nombre:</label>
+                                    <label htmlFor="avatar1">Buscar con Nombre:</label>
                                     <input type="text" id='avatar1' placeholder='Nombre' />
                                 </div>
                                 <div>
-                                    <label for="avatar2">Buscar con Fecha:</label>
+                                    <label htmlFor="avatar2">Buscar con Fecha:</label>
                                     <input type="date" id='avatar2' placeholder='Nombre' />
                                 </div>
                             </div>

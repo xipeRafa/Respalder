@@ -10,14 +10,14 @@ import './App.css'
 import db from './firebase/firebaseConfig'
 
 
-import Inicio from './pages/Inicio';
-import Entregados from './pages/Entregados';
-import Inventario from './pages/inventario/Inventario'
+import Bautisos from './pages/Bautisos';
+import Usuarios from './pages/Usuarios';
+import Confirmaciones from './pages/Confirmaciones'
 
-import OrdersHillo from './pages/OrdersHillo'
-import OrdersSanCarlos from './pages/OrdersSanCarlos'
-import ProductosBajos from './pages/ProductosBajos';
-import ProductosBajosSanCarlos from './pages/productosBajosSanCarlos';
+import Comuniones from './pages/Comuniones'
+import Matrimonios from './pages/Matrimonios'
+import Defunciones from './pages/Defunciones';
+import Parroquia from './pages/Parroquia';
 
 
 import Navbar from './components/Navbar';
@@ -97,24 +97,23 @@ export default function App() {
         
       
       <Routes>
-        <Route path="/adminPolanco" element={<Inicio arr={arr} setGetArr={setGetArr} getArr={getArr} UpdateByIdInventario={UpdateByIdInventario}/>} />
+        <Route path="/" element={<Bautisos arr={arr} setGetArr={setGetArr} getArr={getArr} UpdateByIdInventario={UpdateByIdInventario}/>} />
 
-        <Route path="/adminPolanco/inventario" element={<Inventario arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
-         <Route path="/adminPolanco/inventario/:id" element={<Inventario arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
-
-
-        <Route path="/adminPolanco/ordersHillo" element={<OrdersHillo arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}/>} />
-        <Route path="/adminPolanco/ordersSanCarlos" element={<OrdersSanCarlos arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}/>} />
-
-        <Route path="/adminPolanco/productosBajos" element={<ProductosBajos arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/adminPolanco/productosBajosSanCarlos" element={<ProductosBajosSanCarlos arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
+         <Route path="/confirmaciones" element={<Confirmaciones arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
 
 
-        <Route path="/adminPolanco/entregas" element={<Entregados arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}
+        <Route path="/comuniones" element={<Comuniones arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}/>} />
+        <Route path="/matrimonios" element={<Matrimonios arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}/>} />
+
+        <Route path="/defunciones" element={<Defunciones arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/parroquia" element={<Parroquia arr={arr} setGetArr={setGetArr} getArr={getArr}/>} />
+
+
+        <Route path="/usuarios" element={<Usuarios arrOrders={arrOrders} setGetArrOrders={setGetArrOrders} getArrOrders={getArrOrders}
              arr={arr} setGetArr={setGetArr} getArr={getArr}
         />} />
 
-        <Route path="*"  element={<Navigate to='/adminPolanco' />}/> 
+        <Route path="*"  element={<Navigate to='/' />}/> 
       </Routes>
     </div>
   );

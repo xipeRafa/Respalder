@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 
 
 
-export default function ProductosBajosSanCarlos({ arr, setGetArr, getArr }) {
+export default function Parroquia({ arr, setGetArr, getArr }) {
 
 
    

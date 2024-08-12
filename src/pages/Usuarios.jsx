@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 
-export default function OrdersHillo({ arrOrders, setGetArrOrders, getArrOrders, arr, setGetArr, getArr}) {
+export default function Usuarios({ arrOrders, setGetArrOrders, getArrOrders, arr, setGetArr, getArr}) {
 
 
 
