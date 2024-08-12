@@ -47,7 +47,7 @@ box-shadow: rgba(0, 70, 173, .3) 0 36px 60px -28px inset, rgba(0, 0, 0, 0.3) 0px
 }
 
 .formInfoToFind>div>input{
-	width: 400px;
+	width: 340px;
 	/*box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;*/
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -58,7 +58,10 @@ label{
 }
 
 .formInfoToSave>.button-primary{
+	width: 300px;
 	margin: 48px 2.2em 20px;
+	margin-left: auto;
+	margin-right: auto;
 	height: 60px;
 	font-size: 20px;
 }
@@ -70,6 +73,8 @@ label{
 	}
 	.formInfoToSave>.button-primary{
 		margin: 48px .8em 20px;
+		margin-left: auto;
+	margin-right: auto;
 	}
 	.ButtonsNuevoBuscar>button{
 		width: 100%;
@@ -82,6 +87,9 @@ label{
 		padding: 2rem;
 	}
 	.formInfoToFind>div:first-child{
+		margin-bottom: 2em;
+	}
+	.formInfoToFind>div:nth-child(2){
 		margin-bottom: 2em;
 	}
 	.formInfoToFind>div>input{

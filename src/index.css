@@ -537,7 +537,7 @@ img{width: 100%;}
   h4,
   h5,
   h6 {
-
+    user-select: none;
     margin: 2rem;
     font-weight: 300;
     text-align: center;
