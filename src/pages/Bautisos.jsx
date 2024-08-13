@@ -101,6 +101,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const[nameFinder, setNameFinder]=useState(null)
 
         const handlerNameFinder =({target})=>{
+            setDateFinder(null)
 
             const{ name, value } = target
 
@@ -129,6 +130,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const[dateFinder, setDateFinder]=useState(null)
 
         const handlerDateFinder=({target})=>{
+            setNameFinder(null)
              setGetArr(!getArr)
             const{ value } = target
 
@@ -193,8 +195,19 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                     <input type="date" id='avatar2'  name='fechaBautismoFinder' onChange={(e)=>handlerDateFinder(e)} />
                                 </div>
 
-                                 <p className={nameFinder === null || setDateFinder === null ? 'd-none' : 'cerrar'} 
-                                    onClick={()=>{setNameFinder(null), ()=>setDateFinder(null)}}>Cerrar Buscador</p>
+
+                                <p  className={nameFinder === null ? 'd-none' : 'cerrar'} 
+                                    onClick={()=>setNameFinder(null)}>
+                                        Cerrar Busquedas
+                                </p>
+
+                                <p  className={dateFinder === null ? 'd-none' : 'cerrar'} 
+                                    onClick={()=>setDateFinder(null)}>
+                                        Cerrar Busquedas
+                                </p>
+
+                                
+
                                  <div className='w-100'>{
                                     arrParroquiaState.filter(el => el.nombreBautismo == nameFinder).map((el, i)=>(
                                         <div key={i}>
