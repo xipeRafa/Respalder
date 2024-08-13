@@ -6,39 +6,18 @@ import DatePickerComponent from '../components/datePicker/DatePickerComponent'
 export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr}) {
 
 
-//console.log(arrParroquiaState) 
-
-
-    const formateador = new Intl.DateTimeFormat("es-MX", {
-        dateStyle: "long",
-        timeStyle: "short",
-    });
-
-    const milisegundosComoFecha = (milisegundos) => {
-        return formateador.format(new Date(milisegundos));
-    };
-
-
-
-    //  useEffect(() => {
-    //     setGetArr(!getArr);
-    //     setTimeout(() => {
-    //         localStorage.removeItem("look");
-    //     }, 14000);
-    // }, []);
-
-
         const[objectState, setObjectState]=useState({
                 nombreBautismo:'',
                 fechaBautismo:''
-            })
+        })
+
 
         const { nombreBautismo, fechaBautismo } = objectState
 
 
         const handlerObjectsState =({target})=>{
-            const{ name, value } = target
-            setObjectState({...objectState, [name]:value})
+                const{ name, value } = target
+                setObjectState({...objectState, [name]:value.replace(/\b\w/g, l => l.toUpperCase())})
         }
 
 
@@ -47,85 +26,64 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const[fileState, setFileState]=useState('')
 
         const handlerGetFile =(event)=>{
-
-            const file = event.target.files[0]
-
-
-            // let extension = file.name.split('.')[1];
-
-            // let nameNoExtension = file.name.split('.')[0];
-
-            // let nuevo_nombre = `${Date.now() + nameNoExtension}.${extension}`;
-
-
-            // fetch(file).then(res => res.blob())
-            //     .then(blob => {
-            //         console.log(blob)
-            //         const fileX = new File([blob], nuevo_nombre, { 
-            //             type: `application/${extension}`
-            //         }
-            //     )
-            //     setFileState(fileX)
-            // })
-
-            setFileState(file)
+                setFileState(event.target.files[0])
         }
+
+
 
 
         const submit=()=>{
 
             if(nombreBautismo.length <= 0){
-                alert('El Nombre esta Vacio')
-                return
+                    alert('El Nombre esta Vacio')
+                    return
             }
 
             if(confirm(`Quiere Guardar este Documento?`)) {
                     setTimeout(()=>{
-                        alert('Documento Guardado')
+                            alert('Documento Guardado')
                     },2000)
             }
               
-
             postRegister(fileState, objectState)
 
-            setObjectState({
-                nombreBautismo:'',
-                fechaBautismo:''
-            })
+            setObjectState({nombreBautismo:'', fechaBautismo:''})
+
         }
 
 
 
-//finder-=-=-=-=-==-=-=-=-=
+//=-=-=-= FINDER -=-=-=-=-==-=-=-=-=
         
-        const [emptyState, setEmptyState]=useState(false)
+        const [emptyState, setEmptyState] = useState(false)
+
+        
 
 
+        const [nameFinder, setNameFinder] = useState(null)
 
 
-
-
-        const[nameFinder, setNameFinder]=useState(null)
+        const [valueNameFinder, setValueNameFinder] = useState('')
 
         const handlerNameFinder =({target})=>{
+
             setDateFinder(null)
 
             const{ name, value } = target
 
+            setValueNameFinder(value.replace(/\b\w/g, l => l.toUpperCase()))
+
             if(value.length>4){
+
                 setGetArr(!getArr)
             
-            
-                let found = arrParroquiaState.filter((el) => el.nombreBautismo.indexOf(value) > -1)
-
+                let found = arrParroquiaState.filter((el) => el[name].indexOf(value.replace(/\b\w/g, l => l.toUpperCase())) > -1)
 
                 if(found.length>=1){
-                    setNameFinder(found[0][name])
-                    console.log('found[0].nombreBautismo===>', found[0].nombreBautismo)
-                    setEmptyState(false)
+                        setNameFinder(found[0][name])
+                        setEmptyState(false)
                 }else{
-                    console.log('no hay')
-                    setEmptyState(true)
+                        setEmptyState(true)
                 }
 
 
@@ -133,55 +91,52 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
            
         }
 
-                //.replace(/\b\w/g, l => l.toUpperCase())
+
+
 
         const[dateFinder, setDateFinder]=useState(null)
 
         const handlerDateFinder=({target})=>{
-            setNameFinder(null)
-            
-            const{ value } = target
 
-            let found = arrParroquiaState.filter(el => el.fechaBautismo == value)
+            setNameFinder(null)
+            const{ name, value } = target
+
+            let found = arrParroquiaState.filter(el => el[name] == value)
 
             if(found.length>=1){
-                setGetArr(!getArr)
-                setDateFinder(value)
-                setEmptyState(false)   
+                    setGetArr(!getArr)
+                    setDateFinder(value)
+                    setEmptyState(false)   
             }else{
-                console.log('no hay Date')
-                setEmptyState(true)
-            }    
+                    setEmptyState(true)
+            } 
+
         }
 
 
         
 
-       
+        const[stateButtons, setStateButtons]=useState(true)
 
 
-
-
-
- const[state, setState]=useState(true)
+ 
     return (
-        <>
+            <>
 
-           <div className='ButtonsNuevoBuscar'>
-                <button onClick={()=>{setState(true)}}>Nuevo Bautismo</button>
-                <button onClick={()=>{setState(false)}}>Buscar</button>
-
-           </div> 
+                <div className='ButtonsNuevoBuscar'>
+                        <button onClick={()=>setStateButtons(true)}>  Nuevo Bautismo</button>
+                        <button onClick={()=>setStateButtons(false)}> Buscar</button>
+                </div> 
 
 
                 {
-                    state ? 
+                    stateButtons ? 
                                    
                                 <div className='formInfoToSave'>
 
                                     <p>Respaldar FE de Bautismo</p> 
 
-                                    <input type="text" name='nombreBautismo' placeholder='Nombre' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
 
                                     <input type="date" name='fechaBautismo' value={fechaBautismo} onChange={(e)=>handlerObjectsState(e)} />
 
@@ -204,62 +159,70 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
-                                    <input type="text"  id='avatar1' name='nombreBautismo' onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo'/>
+                                    <input type="text"  id='avatar1' name='nombreBautismo' value={valueNameFinder} 
+                                            onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
                                 </div>
                                 <div>
                                     <label htmlFor="avatar2">Buscar Bautismo con Fecha:</label>
-                                    <input type="date" id='avatar2' value={dateFinder} name='fechaBautismoFinder' onChange={(e)=>handlerDateFinder(e)} />
+                                    <input type="date" id='avatar2' value={dateFinder} name='fechaBautismo' 
+                                            onChange={(e)=>handlerDateFinder(e)} />
                                 </div>
 
 
 
 
-                                <p  className={nameFinder === null ? 'd-none' : 'cerrar'} 
-                                    onClick={()=>setNameFinder(null)}>
+                                <p  className={nameFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setNameFinder(null)}>
                                         Cerrar Busquedas ✘ 
                                 </p>
 
-                                <p  className={dateFinder === null ? 'd-none' : 'cerrar'} 
-                                    onClick={()=>setDateFinder(null)}>
+                                <p  className={dateFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setDateFinder(null)}>
                                         Cerrar Busquedas ✘
                                 </p>
 
-                                <p className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)} >No Encontrado ✘ </p>
+                                <p  className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)}>No Encontrado ✘</p>
 
-                                
 
-                                 <div className='w-100'>{
-                                    arrParroquiaState.filter(el => el.nombreBautismo == nameFinder).map((el, i)=>(
-                                        <div key={i}>
-                                            <p className='textMarc'>Nombre: {el.nombreBautismo}</p>
-                                            <p>Fecha Bautismo: {el.fechaBautismo}</p>
-                                            <p>Documento: {el.fileName}</p>
-                                            <a href={el.fileUrl} target='_blanck'> Abrir Documento</a>
+
+                                {
+                                        nameFinder !== null ? 
+
+                                        <div className='w-100'>
+                                            {arrParroquiaState.filter(el => el.nombreBautismo == nameFinder).map((el, i)=>(
+                                                <div key={i}>
+                                                    <hr />
+                                                    <p><span>Nombre:</span> {el.nombreBautismo}</p>
+                                                    <p><span>Fecha:</span> {el.fechaBautismo}</p>
+                                                    <p><span>Documento:</span> {el.fileName}</p>
+                                                    <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
+                                                    <hr />
+                                                </div> 
+                                            ))}
                                         </div> 
-                                    ))
-                                }</div> 
 
-                                <div className='w-100'>{
-                                    arrParroquiaState.filter(el => el.fechaBautismo == dateFinder).map((el, i)=>(
-                                        <div key={i}>
-                                            <p className='textMarc'>Nombre: {el.nombreBautismo}</p>
-                                            <p>Fecha Bautismo: {el.fechaBautismo}</p>
-                                            <p>Documento: {el.fileName}</p>
-                                            <a href={el.fileUrl} target='_blanck'> Abrir Documento</a>
-                                            <hr />
+
+                                        :
+
+                                        <div className='w-100'>
+                                            {arrParroquiaState.filter(el => el.fechaBautismo == dateFinder).map((el, i)=>(
+                                                <div key={i}>
+                                                    <hr />
+                                                    <p className='textMarc'><span>Nombre:</span> {el.nombreBautismo}</p>
+                                                    <p><span>Fecha:</span> {el.fechaBautismo}</p>
+                                                    <p><span>Documento:</span> {el.fileName}</p>
+                                                    <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
+                                                    <hr />
+                                                </div>
+                                            
+                                            ))}
                                         </div>
-                                        
-                                    ))
-                                }</div>
 
-
-
-                                
-
+                                    }
 
                             </div>
+
                 }
-        </>
+
+            </>
     );
 }
 

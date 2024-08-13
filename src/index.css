@@ -603,6 +603,7 @@ img{width: 100%;}
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   a {
     color: #1eaedb;
+    text-decoration: none;
   }
   a:hover {
     color: #0fa0ce;
@@ -693,6 +694,8 @@ img{width: 100%;}
     border-radius: 4px;
     box-shadow: none;
     box-sizing: border-box;
+    color: #555;
+    font-weight: 300;
   }
   /* Removes awkward default styles on some inputs for iOS */
   input[type="email"],
@@ -762,6 +765,8 @@ img{width: 100%;}
     box-shadow: none;
     box-sizing: border-box;
     margin: 1em 3em;
+    color: #666;
+    font-weight: 300;
 
   }
 
@@ -866,10 +871,10 @@ img{width: 100%;}
   /* Misc
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   hr {
-    margin-top: 3rem;
-    margin-bottom: 3.5rem;
+    margin-top: .4rem;
+    margin-bottom: .6rem;
     border-width: 0;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(111, 111, 111,.2);
   }
   
   /* Clearing
