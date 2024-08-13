@@ -97,6 +97,13 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 
 //finder-=-=-=-=-==-=-=-=-=
+        
+
+
+
+
+
+
 
         const[nameFinder, setNameFinder]=useState(null)
 
@@ -109,33 +116,39 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                 setGetArr(!getArr)
             
             
-            let found = arrParroquiaState.filter((el) => el.nombreBautismo.indexOf(value) > -1)
+                let found = arrParroquiaState.filter((el) => el.nombreBautismo.indexOf(value) > -1)
 
 
-            if(found.length>=1){
-                setNameFinder(found[0][name])
-                console.log('found[0].nombreBautismo===>', found[0].nombreBautismo)
-            }else{
-                console.log('no hay')
-            }
+                if(found.length>=1){
+                    setNameFinder(found[0][name])
+                    console.log('found[0].nombreBautismo===>', found[0].nombreBautismo)
+                }else{
+                    console.log('no hay')
+                     setNameFinder(null)
+                }
 
 
-            console.log('found===>', found)
             }
            
         }
- console.log('nameFinder', nameFinder)
-//.replace(/\b\w/g, l => l.toUpperCase())
+
+                //.replace(/\b\w/g, l => l.toUpperCase())
 
         const[dateFinder, setDateFinder]=useState(null)
 
         const handlerDateFinder=({target})=>{
             setNameFinder(null)
-             setGetArr(!getArr)
+            setGetArr(!getArr)
             const{ value } = target
 
+            let found = arrParroquiaState.filter(el => el.fechaBautismo == value)
 
-            setDateFinder(value)
+            if(found.length>=1){
+                setDateFinder(value)   
+            }else{
+                console.log('no hay Date')
+                setDateFinder(null)
+            }    
         }
 
 
@@ -192,7 +205,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                 </div>
                                 <div>
                                     <label htmlFor="avatar2">Buscar Bautismo con Fecha:</label>
-                                    <input type="date" id='avatar2'  name='fechaBautismoFinder' onChange={(e)=>handlerDateFinder(e)} />
+                                    <input type="date" id='avatar2' value={dateFinder} name='fechaBautismoFinder' onChange={(e)=>handlerDateFinder(e)} />
                                 </div>
 
 
@@ -202,8 +215,8 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                 </p>
 
                                 <p  className={dateFinder === null ? 'd-none' : 'cerrar'} 
-                                    onClick={()=>setDateFinder(null)}>
-                                        Cerrar Busquedas
+                                    onClick={()=>setDateFinder('dd/mm/aa')}>
+                                        Cerrar Busquedas f
                                 </p>
 
                                 
@@ -220,7 +233,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                 }</div> 
 
                                 <div className='w-100'>{
-                                    arrParroquiaState.filter(el => el.fechaBautismo === dateFinder).map((el, i)=>(
+                                    arrParroquiaState.filter(el => el.fechaBautismo == dateFinder).map((el, i)=>(
                                         <div key={i}>
                                             <p className='textMarc'>Nombre: {el.nombreBautismo}</p>
                                             <p>Fecha Bautismo: {el.fechaBautismo}</p>
