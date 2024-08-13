@@ -101,14 +101,22 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const[nameFinder, setNameFinder]=useState()
 
         const handlerNameFinder =({target})=>{
+
             const{ name, value } = target
+            
             let found = arrParroquiaState.filter((el) => el.nombreBautismo.indexOf(value) > -1)
+
+
             if(found.length>=1){
                 setNameFinder(found[0][name])
+                console.log('found===>', found[0].nombreBautismo)
             }else{
                 console.log('no hay')
             }
-            console.log(found)
+
+
+            console.log('found===>', found)
+
            
         }
  console.log('nameFinder', nameFinder)
