@@ -6,7 +6,7 @@ import DatePickerComponent from '../components/datePicker/DatePickerComponent'
 export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr}) {
 
 
-//console.log(arrParroquiaState)
+//console.log(arrParroquiaState) 
 
 
     const formateador = new Intl.DateTimeFormat("es-MX", {
@@ -103,20 +103,24 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const handlerNameFinder =({target})=>{
 
             const{ name, value } = target
+
+            if(value.length>4){
+                setGetArr(!getArr)
+            
             
             let found = arrParroquiaState.filter((el) => el.nombreBautismo.indexOf(value) > -1)
 
 
             if(found.length>=1){
                 setNameFinder(found[0][name])
-                console.log('found===>', found[0].nombreBautismo)
+                console.log('found[0].nombreBautismo===>', found[0].nombreBautismo)
             }else{
                 console.log('no hay')
             }
 
 
             console.log('found===>', found)
-
+            }
            
         }
  console.log('nameFinder', nameFinder)
@@ -125,7 +129,10 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const[dateFinder, setDateFinder]=useState()
 
         const handlerDateFinder=({target})=>{
+             setGetArr(!getArr)
             const{ value } = target
+
+
             setDateFinder(value)
         }
 
@@ -176,6 +183,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                             : 
 
                             <div className='formInfoToFind'>
+
                                 <div>
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
                                     <input type="text"  id='avatar1' name='nombreBautismo' onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo'/>
