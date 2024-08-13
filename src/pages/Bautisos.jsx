@@ -98,7 +98,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 //finder-=-=-=-=-==-=-=-=-=
         
-
+        const [emptyState, setEmptyState]=useState(false)
 
 
 
@@ -122,9 +122,10 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                 if(found.length>=1){
                     setNameFinder(found[0][name])
                     console.log('found[0].nombreBautismo===>', found[0].nombreBautismo)
+                    setEmptyState(false)
                 }else{
                     console.log('no hay')
-                     setNameFinder(null)
+                    setEmptyState(true)
                 }
 
 
@@ -138,16 +139,18 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
         const handlerDateFinder=({target})=>{
             setNameFinder(null)
-            setGetArr(!getArr)
+            
             const{ value } = target
 
             let found = arrParroquiaState.filter(el => el.fechaBautismo == value)
 
             if(found.length>=1){
-                setDateFinder(value)   
+                setGetArr(!getArr)
+                setDateFinder(value)
+                setEmptyState(false)   
             }else{
                 console.log('no hay Date')
-                setDateFinder(null)
+                setEmptyState(true)
             }    
         }
 
@@ -209,15 +212,19 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                 </div>
 
 
+
+
                                 <p  className={nameFinder === null ? 'd-none' : 'cerrar'} 
                                     onClick={()=>setNameFinder(null)}>
-                                        Cerrar Busquedas
+                                        Cerrar Busquedas ✘ 
                                 </p>
 
                                 <p  className={dateFinder === null ? 'd-none' : 'cerrar'} 
-                                    onClick={()=>setDateFinder('dd/mm/aa')}>
-                                        Cerrar Busquedas f
+                                    onClick={()=>setDateFinder(null)}>
+                                        Cerrar Busquedas ✘
                                 </p>
+
+                                <p className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)} >No Encontrado ✘ </p>
 
                                 
 
