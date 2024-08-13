@@ -41,7 +41,6 @@ export default function App() {
         fireBaseCollection = location.pathname.substring(1) 
     }    
 
-    console.log(fireBaseCollection)
 
 
 
@@ -73,7 +72,7 @@ export default function App() {
 
         const postCollection = collection(firestoreDB, fireBaseCollection);
 
-        const filesFolderRef = ref(storageDocs, `${fireBaseCollection}-Files/${selectedFile?.name}`)
+        const filesFolderRef = ref(storageDocs, `${Date.now()}-Files/${selectedFile?.name}`)
 
         uploadBytes(filesFolderRef, selectedFile)
             .then(() => {

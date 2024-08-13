@@ -143,6 +143,19 @@ label{
 
 }*/
 
+.w-100{
+	width: 100%;
+}
+
+.w-100 p{
+	margin: 0;
+}
+.textMarc{
+	background-color: yellow;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
 
 
 
