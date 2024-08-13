@@ -156,6 +156,18 @@ label{
 	padding-bottom: 2px;
 }
 
+.cerrar{
+	width: 100%;
+	text-align: center;
+	color:red;
+	cursor: pointer;
+	
+}
+
+.d-none{
+	display: none;
+}
+
 
 
 

@@ -98,7 +98,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 //finder-=-=-=-=-==-=-=-=-=
 
-        const[nameFinder, setNameFinder]=useState()
+        const[nameFinder, setNameFinder]=useState(null)
 
         const handlerNameFinder =({target})=>{
 
@@ -126,7 +126,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
  console.log('nameFinder', nameFinder)
 //.replace(/\b\w/g, l => l.toUpperCase())
 
-        const[dateFinder, setDateFinder]=useState()
+        const[dateFinder, setDateFinder]=useState(null)
 
         const handlerDateFinder=({target})=>{
              setGetArr(!getArr)
@@ -193,7 +193,8 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                     <input type="date" id='avatar2'  name='fechaBautismoFinder' onChange={(e)=>handlerDateFinder(e)} />
                                 </div>
 
-
+                                 <p className={nameFinder === null || setDateFinder === null ? 'd-none' : 'cerrar'} 
+                                    onClick={()=>{setNameFinder(null), ()=>setDateFinder(null)}}>Cerrar Buscador</p>
                                  <div className='w-100'>{
                                     arrParroquiaState.filter(el => el.nombreBautismo == nameFinder).map((el, i)=>(
                                         <div key={i}>
@@ -203,7 +204,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                             <a href={el.fileUrl} target='_blanck'> Abrir Documento</a>
                                         </div> 
                                     ))
-                                }</div>
+                                }</div> 
 
                                 <div className='w-100'>{
                                     arrParroquiaState.filter(el => el.fechaBautismo === dateFinder).map((el, i)=>(
@@ -217,6 +218,8 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                         
                                     ))
                                 }</div>
+
+
 
                                 
 
