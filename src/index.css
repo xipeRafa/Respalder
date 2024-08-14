@@ -1333,3 +1333,8 @@ template {
     top:-4px;
 } */
 
+
+input[type="date"]{
+  min-width: 400px;
+}
+
