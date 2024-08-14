@@ -35,7 +35,7 @@ export default function App() {
 
     let fireBaseCollection 
 
-    if(location.pathname == '/Respalder'){
+    if(location.pathname == '/'){
         fireBaseCollection = 'bautismos'
     }else{
         fireBaseCollection = location.pathname.split('/')[2] 
@@ -132,7 +132,7 @@ export default function App() {
         }*/}
       
       <Routes>
-        <Route path="/Respalder" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="/Respalder/confirmaciones" element={<Confirmaciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/comuniones" element={<Comuniones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
@@ -142,7 +142,7 @@ export default function App() {
         <Route path="/Respalder/parroquia" element={<Parroquia postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="*"  element={<Navigate to='/Respalder' />}/> 
+        <Route path="*"  element={<Navigate to='/' />}/> 
       </Routes>
     </div>
   );
