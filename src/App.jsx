@@ -142,7 +142,7 @@ export default function App() {
         <Route path="/Respalder/parroquia" element={<Parroquia postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="*"  element={<Navigate to='/Respalder' />}/> 
+        <Route path="*"  element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 
       </Routes>
     </div>
   );
