@@ -40,8 +40,10 @@ export default function Navbar() {
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
     
         <NavLink to="/"> Bautismos</NavLink>
-        <NavLink to="/confirmaciones"> Confirmaciones </NavLink>
+        
         <NavLink to="/comuniones"  > Comuniones</NavLink>
+        <NavLink to="/confirmaciones"> Confirmaciones </NavLink>
+        
 
         <NavLink to="/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/defunciones"   > Defunciones</NavLink>

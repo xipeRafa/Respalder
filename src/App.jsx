@@ -32,8 +32,8 @@ export default function App() {
 
     const location = useLocation();
 
-    let fireBaseCollection 
 
+    let fireBaseCollection 
 
     if(location.pathname == '/'){
         fireBaseCollection = 'bautismos'
@@ -134,13 +134,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="/confirmaciones" element={<Confirmaciones arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/comuniones" element={<Comuniones arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
-        <Route path="/matrimonios" element={<Matrimonios arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/confirmaciones" element={<Confirmaciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/comuniones" element={<Comuniones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/matrimonios" element={<Matrimonios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="/defunciones" element={<Defunciones arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/parroquia" element={<Parroquia arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/usuarios" element={<Usuarios arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/defunciones" element={<Defunciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/parroquia" element={<Parroquia postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="*"  element={<Navigate to='/' />}/> 
       </Routes>

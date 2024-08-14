@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import DatePickerComponent from '../components/datePicker/DatePickerComponent'
+//import DatePickerComponent from '../components/datePicker/DatePickerComponent'
 
+//import {saveAs} from 'file-saver'
+
+//var zip =require('jszip')()
+
+//import zip from 'jszip'
+//import JSZip from 'jszip';
 
 export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr}) {
 
@@ -23,11 +29,52 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 
 
+       
+
         const[fileState, setFileState]=useState('')
 
+        //const[fileStateBase64, setFileStateBase64]=useState([])
+
         const handlerGetFile =(event)=>{
-                setFileState(event.target.files[0])
+                setFileState(event.target.files[0])   
         }
+
+
+
+                    // let arrArchivos=[]
+
+                    // Array.from(event.target.files).forEach(el=>{
+
+                    //     let reader = new FileReader()
+                    //     reader.readAsDataURL(el)
+                    //     reader.onload=function(){
+                    //         let arr = []
+                    //         let base64 = reader.result
+                    //         arr=base64.split(',')
+                    //         arrArchivos.push({base64: arr[1], name:el.name})
+                    //     }
+                    // })
+
+                    // setFileStateBase64({...fileStateBase64, arrArchivos})
+
+
+
+        
+
+        // const zip = new JSZip()
+
+        // const downLoadZip64=()=>{
+        //          const {arrArchivos}=fileStateBase64
+
+        //             arrArchivos.map(el=>{
+        //                 zip.file(el.name, el.base64, {base64:true})
+        //             })
+
+        //             zip.generateAsync({type:'blod'})
+        //                 .then(function(content){
+        //                     saveAs(content, 'semamaron.zip')
+        //                 })      
+        // }
 
 
 
@@ -44,7 +91,8 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                             alert('Documento Guardado')
                     },2000)
             }
-              
+            
+            objectState.nombreBautismo = nombreBautismo.trim()  
             postRegister(fileState, objectState)
 
             setObjectState({nombreBautismo:'', fechaBautismo:''})
@@ -146,9 +194,13 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
                                     <input type="file"  name="fileBautismo" onChange={(e)=>handlerGetFile(e)} />
 
-                                    <button className='button-primary guardar' onClick={submit}>
+                                    <button className='button-primary' onClick={submit}>
                                         GUARDAR
                                     </button>
+
+                                  {/*  <button onClick={()=>downLoadZip64() }>
+                                        zip
+                                    </button>*/}
 
                                 </div>    
 
