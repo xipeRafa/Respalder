@@ -39,17 +39,17 @@ export default function Navbar() {
 
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
     
-        <NavLink to="/"> Bautismos</NavLink>
+        <NavLink to="/Respalder"> Bautismos</NavLink>
         
-        <NavLink to="/comuniones"  > Comuniones</NavLink>
-        <NavLink to="/confirmaciones"> Confirmaciones </NavLink>
+        <NavLink to="/Respalder/comuniones"  > Comuniones</NavLink>
+        <NavLink to="/Respalder/confirmaciones"> Confirmaciones </NavLink>
         
 
-        <NavLink to="/matrimonios"> Matrimonios</NavLink>
-        <NavLink to="/defunciones"   > Defunciones</NavLink>
+        <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
+        <NavLink to="/Respalder/defunciones"   > Defunciones</NavLink>
 
-        <NavLink to="/parroquia"   > parroquia</NavLink>
-        <NavLink to="/usuarios">Usuarios</NavLink>
+        <NavLink to="/Respalder/parroquia"   > parroquia</NavLink>
+        <NavLink to="/Respalder/usuarios">Usuarios</NavLink>
      
     </div>  
 

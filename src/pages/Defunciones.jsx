@@ -148,7 +148,7 @@ export default function Defunciones({postRegister, arrParroquiaState, setGetArr,
                                    
                                 <div className='formInfoToSave'>
 
-                                    <p>Respaldar Acta de Matrimonio</p> 
+                                    <p>Respaldar Acta de Defunción</p> 
 
                                     <input type="text" name='nombreDefuncion' placeholder='Nombre de Esposo...' value={nombreDefuncion} onChange={(e)=>handlerObjectsState(e)} />
 
