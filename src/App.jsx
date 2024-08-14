@@ -35,10 +35,10 @@ export default function App() {
 
     let fireBaseCollection 
 
-    if(location.pathname == '/'){
+    if(location.pathname == '/Respalder'){
         fireBaseCollection = 'bautismos'
     }else{
-        fireBaseCollection = location.pathname.substring(1) 
+        fireBaseCollection = location.pathname.split('/')[2] 
     }    
 
 
@@ -124,7 +124,7 @@ export default function App() {
     
       <Navbar />
 
-      <h3 className='registroParroquial-h3'>REGISTRO PARROQUIAL</h3>
+      <h3 className='registroParroquial-h3'>REGISTER PARROQUIAL</h3>
        {/* {
             location.pathname == '/'    ? 
                                             <b className=''>Bautismos</b> 

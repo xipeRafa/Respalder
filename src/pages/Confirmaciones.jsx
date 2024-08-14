@@ -11,7 +11,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
                 fechaConfirmacion:''
         })
 
-console.log(objectState)
+
 
         const { nombreConfirmacion, fechaConfirmacion } = objectState
 
@@ -69,7 +69,7 @@ console.log(objectState)
 
         const [valueNameFinder, setValueNameFinder] = useState('')
 
-console.log(valueNameFinder.length)
+
 
         const handlerNameFinder =({target})=>{
 
