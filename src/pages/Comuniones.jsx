@@ -116,22 +116,9 @@ export default function Comuniones({postRegister, arrParroquiaState, setGetArr, 
 
         }
 
-
-        
-
         const[stateButtons, setStateButtons]=useState(true)
 
    
-
-
-
-
-
-
-
-
-
-
     return (
         <>
 

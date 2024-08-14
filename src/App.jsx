@@ -50,7 +50,7 @@ export default function App() {
 
     useEffect(() => {
 
-        const data = collection(firestoreDB, fireBaseCollection)
+        const data = collection(firestoreDB, fireBaseCollection || 'bautismos')
 
         getDocs(data).then((resp) => {
             setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }) ))
@@ -68,9 +68,8 @@ export default function App() {
 
     const postRegister = (selectedFile, postBody) => {
 
-        console.log(selectedFile, selectedFile.name)
 
-        const postCollection = collection(firestoreDB, fireBaseCollection);
+        const postCollection = collection(firestoreDB, fireBaseCollection || 'bautismos');
 
         const filesFolderRef = ref(storageDocs, `${fireBaseCollection}-Files/${Date.now()}/${selectedFile?.name}`)
 
