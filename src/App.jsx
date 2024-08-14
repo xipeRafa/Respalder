@@ -124,7 +124,7 @@ export default function App() {
     
       <Navbar />
 
-      <h3 className='registroParroquial-h3'>REGISTER PARROQUIAL</h3>
+      <h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3>
        {/* {
             location.pathname == '/'    ? 
                                             <b className=''>Bautismos</b> 
