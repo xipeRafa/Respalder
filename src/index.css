@@ -1335,6 +1335,15 @@ template {
 
 
 input[type="date"]{
-  min-width: 400px;
+  min-width: calc(99% - 28px);
 }
+
+@media(min-width:1160px){
+    input[type="date"]{
+  min-width:6%;
+}
+}
+
+
+
 
