@@ -36,6 +36,7 @@ const[objectState, setObjectState]=useState({
 const {name, email, password, password2} = objectState
 
   const handlerObjectsState=(e)=>{
+        setError('')
         const {name, value}=e.target
         setObjectState({...objectState, [name]:value})
   }
@@ -48,38 +49,46 @@ console.log(error)
 
 
   
-  const enviar = () => {
+    const enviar = () => {
+
+        setError('')
+
+        if (password.length < 1) {
+              return setError("Nombre No Escrito");
+        }
+
+        if (password !== password2) {
+              return setError("Claves No son iguales.");
+        }
+
+        if (password.length < 6) {
+              return setError("La Clave es muy Corta Use 6 Caracteres Minimo");
+        }
+
+        register(authApp, email, password);
+
+    }
 
 
-      setError('');
+    const entrar = () => {
 
-      if (password !== password2) {
-          return setError("Claves No son iguales.");
-      }
-
-      if (password.length < 6) {
-          return setError("Claves es muy corta Use 6 caracteres Minimo");
-      }
-
-      register(authApp, email, password);
-
-}
-
- const entrar = () => {
+        setError('')
 
 
-      setError('');
+        if (password.length < 1) {
+              return setError("Correo no Escrito");
+        }
 
 
-      if (password.length < 6) {
-          return setError("Claves es muy corta Use 6 caracteres Minimo");
-      }
+        if (password.length < 6) {
+              return setError("Claves es muy corta Use 6 caracteres Minimo");
+        }
 
-      login(authApp, email, password);
+        login(authApp, email, password);
 
-}
+    }
 
- console.log(stateLogin)
+
 
 
     return (
@@ -91,8 +100,16 @@ console.log(error)
                 <div>
 
                     <div >   
-                        <div className={stateButtons ? style.borderB : style.borderBgray} onClick={()=>setStateButtons(true)} >REGISTRARSE</div>
-                        <div className={stateButtons ? style.borderBgray : style.borderB} onClick={()=>setStateButtons(false)}>ENTRAR</div> 
+                        <div    className={stateButtons ? style.borderB : style.borderBgray} 
+                                onClick={()=>{setStateButtons(true), setError('') }}>
+                                REGISTRARSE
+                        </div>
+
+                        <div    className={stateButtons ? style.borderBgray : style.borderB} 
+                                onClick={()=>{setStateButtons(false), setError('')}}>
+                                    ENTRAR
+                        </div> 
+
                     </div>
 
                 <div>
@@ -103,7 +120,8 @@ console.log(error)
                             <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
                             <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
                             <div><input type="text" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
-                            <div><button onClick={()=>enviar()} >ENVIAR</button></div>{error}
+                            <div><button onClick={()=>enviar()} >ENVIAR</button></div>
+                               <span className={style.colorRed}>{error}</span>
                         </div>
 
                         :
@@ -112,7 +130,7 @@ console.log(error)
                             <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
 
                             <div><button onClick={()=>entrar()}>ENTRAR</button></div>
-                            {error}
+                            <span className={style.colorRed}>{error}</span>
                         </div>
                     }
                          

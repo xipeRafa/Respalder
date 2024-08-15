@@ -23,7 +23,12 @@ export default function Navbar() {
 
 
   return (
+
+
+
 <div className="navBar3">
+
+{  localStorage.getItem('userEmailLS') !== null &&<>
 
     <div onClick={()=>setIsActive(!isActive)}  className="hamburger" >
 
@@ -51,9 +56,9 @@ export default function Navbar() {
         <NavLink to="/Respalder/miparroquia"> mi parroquia</NavLink>
         <NavLink to="/Respalder/usuarios"> Usuarios</NavLink>
      
-    </div>  
+    </div>   </>}
 
-</div>
+</div> 
   );
 }
 

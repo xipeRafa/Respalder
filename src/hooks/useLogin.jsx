@@ -57,7 +57,7 @@ const useLogin = ( ) => {
               const user = userCredential.user
               localStorage.setItem('userEmailLS', user.email)
               setStateLogin(!stateLogin)
-              //location.reload()
+              location.reload()
           })
           .catch((error) => {
               console.log(error.code);
