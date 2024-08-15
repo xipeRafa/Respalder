@@ -196,7 +196,7 @@ export default function Matrimonios({postRegister, arrParroquiaState, setGetArr,
                                         nameFinder !== null ? 
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.nombreMatrimonio == nameFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.nombreMatrimonio === nameFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombreMatrimonio}</p>
@@ -212,7 +212,7 @@ export default function Matrimonios({postRegister, arrParroquiaState, setGetArr,
                                         :
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.fechaMatrimonio == dateFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.fechaMatrimonio === dateFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p className='textMarc'><span>Nombre:</span> {el.nombreMatrimonio}</p>

@@ -239,7 +239,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                         nameFinder !== null ? 
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.nombreBautismo == nameFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.nombreBautismo === nameFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombreBautismo}</p>
@@ -255,7 +255,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                         :
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.fechaBautismo == dateFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.fechaBautismo === dateFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p className='textMarc'><span>Nombre:</span> {el.nombreBautismo}</p>

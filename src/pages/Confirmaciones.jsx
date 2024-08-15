@@ -200,7 +200,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
                                         nameFinder !== null ? 
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.nombreConfirmacion == nameFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.nombreConfirmacion === nameFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombreConfirmacion}</p>
@@ -216,7 +216,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
                                         :
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.fechaConfirmacion == dateFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.fechaConfirmacion === dateFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p className='textMarc'><span>Nombre:</span> {el.nombreConfirmacion}</p>

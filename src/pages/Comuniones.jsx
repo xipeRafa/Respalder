@@ -183,7 +183,7 @@ export default function Comuniones({postRegister, arrParroquiaState, setGetArr, 
                                         nameFinder !== null ? 
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.nombreComunion == nameFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.nombreComunion === nameFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombreComunion}</p>
@@ -199,7 +199,7 @@ export default function Comuniones({postRegister, arrParroquiaState, setGetArr, 
                                         :
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.fechaComunion == dateFinder).map((el, i)=>(
+                                            {arrParroquiaState.filter(el => el.fechaComunion === dateFinder).map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p className='textMarc'><span>Nombre:</span> {el.nombreComunion}</p>
