@@ -130,6 +130,7 @@
 	.loginContainer{
 		flex-direction: column;
 		height: auto;
+		width: 100%;
 	}
 	.loginContainer>*:first-child{
 		width: 100%;
