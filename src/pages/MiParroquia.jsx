@@ -141,7 +141,13 @@ console.log(error)
 
             </div>
 
-            :<p onClick={()=>logout()}>salir</p>}
+            :
+
+            <div className={style.hello}>
+                    <span>{localStorage.userEmailLS}</span>
+                    <button onClick={()=>logout()}>SALIR</button>
+            </div>
+            }
         </> 
     );
 }

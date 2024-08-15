@@ -73,6 +73,7 @@
 	letter-spacing: .6px;
 	font-size: 20px;
 	font-weight: 400;
+	color: rgba(255,255,255,0.8);
 }
 
 .borderBgray{
@@ -80,6 +81,7 @@
 	letter-spacing: .6px;
 	font-size: 20px;
 	font-weight: 400;
+	color: rgba(255,255,255,0.8);
 }
 /* #30e1df */
 
@@ -93,7 +95,8 @@
 	width: 98%;
 	margin-bottom:2px;
 	border:none;
-	color: white;
+/*	border:1px solid #1eaedb;*/
+	color: rgba(255,255,255,0.8);
 	letter-spacing: .4px;
 }
 
@@ -101,7 +104,7 @@
 /*	background-color: transparent!important;*/
 	background-color: #1eaedb;
 	border-color: #1eaedb;
-	color: white;
+	color: rgba(255,255,255,0.8);
 	margin-top: 14px;
 }
 
@@ -114,6 +117,12 @@
 
 .colorRed{
 	color: red;
+}
+
+.hello{
+	display: flex;
+	justify-content: space-between;
+	background-color: rgba(255,255,255,0.5);
 }
 
 
