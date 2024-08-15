@@ -120,13 +120,12 @@ export default function App() {
       <h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3> :
       <img src={logo} className='logo' />  }*/}
 
-<h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3> 
+        
 
-       {/* {
-            location.pathname == '/'    ? 
-                                            <b className=''>Bautismos</b> 
-                                        :   <h5>{location.pathname.substring(1).replace(/\b\w/g, l => l.toUpperCase())}</h5>
-        }*/}
+        {
+            location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   ? ''
+                                                : <h3 className={localStorage.getItem('userEmailLS') !== null ? 'registroParroquial-h3' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3> 
+        }
       
       <Routes>
         <Route path="/Respalder" element={<MiParroquia />}  />
