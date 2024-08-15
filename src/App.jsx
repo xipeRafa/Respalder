@@ -110,7 +110,6 @@ export default function App() {
 
 
 
-
   return (
     <div className={localStorage.getItem('userEmailLS') !== null ? 'containerApp' : 'containerApp2'}>
     
@@ -123,8 +122,9 @@ export default function App() {
         
 
         {
-            location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   ? ''
-                                                : <h3 className={localStorage.getItem('userEmailLS') !== null ? 'registroParroquial-h3' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3> 
+            location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   
+                ? <h3 className={localStorage.getItem('userEmailLS') !== null ? 'd-none' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3>
+                : <h3 className={localStorage.getItem('userEmailLS') !== null ? 'registroParroquial-h3' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3> 
         }
       
       <Routes>
