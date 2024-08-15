@@ -172,9 +172,11 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
             <>
 
                 <div className='ButtonsNuevoBuscar'>
-                        <button onClick={()=>setStateButtons(true)}>  Nuevo Bautismo</button>
-                        <button onClick={()=>setStateButtons(false)}> Buscar</button>
+                        <button onClick={()=>setStateButtons(true)}>  Nuevo Bautismo </button>
+                        <button onClick={()=>setStateButtons(false)}> Buscar {/*<span className='lupita'>⌕</span>*/} </button>
                 </div> 
+
+
 
 
                 {
