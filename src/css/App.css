@@ -113,6 +113,7 @@ label{
 .registroParroquial-h3{
 	font-size: 2em;
 	letter-spacing: .4px;
+	font-family: oblique;
 }
 
 @media(max-width:1000px){
@@ -208,7 +209,18 @@ label{
 	font-weight: 100;
 }*/
 
+.logo{
+	width: 30%;
+	margin-left: 35%;
+}
+@media(max-width:1000px){
+	.logo{
+		margin-left: 0;
+		width: 100%;
+		padding: 0;
 
+	}
+}
 
 
 

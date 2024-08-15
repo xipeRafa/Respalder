@@ -6,7 +6,7 @@ import { getDocs, collection, updateDoc, doc, addDoc } from 'firebase/firestore'
 import { ref, uploadBytes, getBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 import './css/App.css'
-
+import logo from './pages/MIN.jpeg'
 
 import { firestoreDB, storageDocs } from './firebase/firebaseConfig';
 
@@ -138,7 +138,12 @@ console.log(fireBaseCollection)
     
       <Navbar />
 
-      <h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3>
+    {/*{localStorage.getItem('userEmailLS') !== null ?
+      <h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3> :
+      <img src={logo} className='logo' />  }*/}
+
+<h3 className='registroParroquial-h3'>RESPALDER PARROQUIAL</h3> 
+
        {/* {
             location.pathname == '/'    ? 
                                             <b className=''>Bautismos</b> 
