@@ -24,14 +24,14 @@ export default function MiParroquia() {
     //register (authApp, email, password)
     //login (authApp, email, password)
 
-    console.log(stateLogin)
+   
 
 
 
 const[objectState, setObjectState]=useState({
     name:'', email:'', password:'', password2:''
 })
-console.log(objectState)
+
 
 const {name, email, password, password2} = objectState
 
@@ -48,7 +48,7 @@ console.log(error)
 
 
   
-  const enviar = (e) => {
+  const enviar = () => {
 
 
       setError('');
@@ -63,11 +63,23 @@ console.log(error)
 
       register(authApp, email, password);
 
+}
 
+ const entrar = () => {
+
+
+      setError('');
+
+
+      if (password.length < 6) {
+          return setError("Claves es muy corta Use 6 caracteres Minimo");
+      }
+
+      login(authApp, email, password);
 
 }
 
-
+ console.log(stateLogin)
 
 
     return (
@@ -91,17 +103,17 @@ console.log(error)
                             <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
                             <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
                             <div><input type="text" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
-                            <div><button onClick={()=>enviar()} >ENVIAR</button></div>
+                            <div><button onClick={()=>enviar()} >ENVIAR</button></div>{error}
                         </div>
 
                         :
                         <div className={style.inputBG}>
-                            <div><input type="email" name='' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
-                            <div><input type="text" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
+                            <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
+                            <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
 
-                            <div><button>ENTRAR</button></div>
+                            <div><button onClick={()=>entrar()}>ENTRAR</button></div>
+                            {error}
                         </div>
-
                     }
                          
                     </div>

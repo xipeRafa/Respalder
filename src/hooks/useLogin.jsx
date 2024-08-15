@@ -26,7 +26,6 @@ const useLogin = ( ) => {
           const errorObj = {
               "auth/email-already-in-use" : () => alert("El Correo ya esta en Uso"),
               "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
-
               "auth/weak-password": () => alert("La Contraseña es muy débil."),
               "auth/invalid-email": () => alert("El Correo No es Valido"),
           };
@@ -58,7 +57,7 @@ const useLogin = ( ) => {
               const user = userCredential.user
               localStorage.setItem('userEmailLS', user.email)
               setStateLogin(!stateLogin)
-              location.reload()
+              //location.reload()
           })
           .catch((error) => {
               console.log(error.code);
