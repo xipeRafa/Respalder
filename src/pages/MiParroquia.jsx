@@ -146,7 +146,7 @@ console.log(error)
             :<div>
 
                 <div className={style.hello}>
-                    <span>{localStorage.userEmailLS}</span>
+                    <span>{localStorage.userEmailLS.split('@')[0]}</span>
                     <button onClick={()=>logout()}>SALIR</button>    
                 </div>
 
