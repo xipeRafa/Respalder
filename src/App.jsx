@@ -5,7 +5,7 @@ import { Routes, Route, useLocation, Navigate} from 'react-router-dom';
 import { getDocs, collection, updateDoc, doc, addDoc } from 'firebase/firestore'
 import { ref, uploadBytes, getBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
-import './App.css'
+import './css/App.css'
 
 
 import { firestoreDB, storageDocs } from './firebase/firebaseConfig';
@@ -18,10 +18,28 @@ import Confirmaciones from './pages/Confirmaciones'
 import Comuniones from './pages/Comuniones'
 import Matrimonios from './pages/Matrimonios'
 import Defunciones from './pages/Defunciones';
-import Parroquia from './pages/Parroquia';
+import MiParroquia from './pages/MiParroquia';
 
 
 import Navbar from './components/Navbar';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -138,7 +156,7 @@ export default function App() {
         <Route path="/Respalder/matrimonios" element={<Matrimonios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="/Respalder/defunciones" element={<Defunciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/Respalder/parroquia" element={<Parroquia postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/Respalder/miparroquia" element={<MiParroquia postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="*"  element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 

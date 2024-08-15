@@ -2,9 +2,11 @@
 //Inicializacion de Firebase/Firestore
 import firebase from 'firebase/compat/app';
 
+import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 
+import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage';
 
@@ -25,10 +27,7 @@ const app = firebase.initializeApp({
 
 
 
-/*
-se.firestore().doc();
-getDoc(docRef); */
-
+export const authApp = getAuth(app);
 
 export const firestoreDB = getFirestore(app)
 

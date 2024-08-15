@@ -1,6 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-import "./navbar.css";
+import "../css/navbar.css";
 import { useState } from "react";
 
 
@@ -48,7 +48,7 @@ export default function Navbar() {
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
 
-        <NavLink to="/Respalder/parroquia"> parroquia</NavLink>
+        <NavLink to="/Respalder/miparroquia"> mi parroquia</NavLink>
         <NavLink to="/Respalder/usuarios"> Usuarios</NavLink>
      
     </div>  
