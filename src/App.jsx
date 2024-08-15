@@ -107,7 +107,7 @@ export default function App() {
 
     }
 
-
+console.log(location.pathname)
 
 
   return (
