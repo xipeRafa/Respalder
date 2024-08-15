@@ -58,7 +58,7 @@ console.log(error)
         }
 
         if (password !== password2) {
-              return setError("Claves No son iguales.");
+              return setError("Passwords No son Iguales");
         }
 
         if (password.length < 6) {
@@ -119,8 +119,8 @@ console.log(error)
                         <div className={style.inputBG}>
                             <div><input type="text" name='name'  onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
                             <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
-                            <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
-                            <div><input type="text" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
+                            <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
+                            <div><input type="password" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
                             <div><button onClick={()=>enviar()} >ENVIAR</button></div>
                                <span className={style.colorRed}>{error}</span>
                         </div>
@@ -128,7 +128,7 @@ console.log(error)
                         :
                         <div className={style.inputBG}>
                             <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
-                            <div><input type="text" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
+                            <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
 
                             <div><button onClick={()=>entrar()}>ENTRAR</button></div>
                             <span className={style.colorRed}>{error}</span>
