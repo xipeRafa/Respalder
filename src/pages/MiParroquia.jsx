@@ -4,8 +4,13 @@ import imgA from './abc.jpeg'
 
 import style from '../css/login.module.css'
 
+import useLogin from '../hooks/useLogin'
 
-export default function MiParroquia({arrParroquiaState, setGetArr, getArr}) {
+import { authApp } from '../firebase/firebaseConfig';
+
+
+
+export default function MiParroquia() {
 
 
    
@@ -14,11 +19,12 @@ export default function MiParroquia({arrParroquiaState, setGetArr, getArr}) {
 
    
 
+    const [register, login, logout, stateLogin] = useLogin()
 
+    //register (authApp, email, password)
+    //login (authApp, email, password)
 
-
-
-
+    console.log(stateLogin)
 
 
 
@@ -36,7 +42,7 @@ export default function MiParroquia({arrParroquiaState, setGetArr, getArr}) {
 
                     <div >   
                         <div className={stateButtons ? style.borderB : style.borderBgray} onClick={()=>setStateButtons(true)} >REGISTRARSE</div>
-                        <div className={stateButtons ? style.borderBgray : style.borderB  } onClick={()=>setStateButtons(false)}>ENTRAR</div> 
+                        <div className={stateButtons ? style.borderBgray : style.borderB} onClick={()=>setStateButtons(false)}>ENTRAR</div> 
                     </div>
 
                 <div>
@@ -44,7 +50,7 @@ export default function MiParroquia({arrParroquiaState, setGetArr, getArr}) {
                     {stateButtons ?
                         <div className={style.inputBG}>
                             <div><input type="text" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
-                            <div><input type="email" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
+                            <div><input type="email" name='' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
                             <div><input type="text" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
                             <div><input type="text" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
                             <div><button>ENVIAR</button></div>
@@ -52,7 +58,7 @@ export default function MiParroquia({arrParroquiaState, setGetArr, getArr}) {
 
                         :
                         <div className={style.inputBG}>
-                            <div><input type="email" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
+                            <div><input type="email" name='' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
                             <div><input type="text" name=''  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
 
                             <div><button>ENTRAR</button></div>
