@@ -53,6 +53,8 @@ console.log(error)
 
         setError('')
 
+        localStorage.setItem('userName', name)
+
         if (password.length < 1) {
               return setError("Nombre No Escrito");
         }
@@ -141,11 +143,21 @@ console.log(error)
 
             </div>
 
-            :
+            :<div>
 
-            <div className={style.hello}>
+                <div className={style.hello}>
                     <span>{localStorage.userEmailLS}</span>
-                    <button onClick={()=>logout()}>SALIR</button>
+
+                    <button onClick={()=>logout()}>SALIR</button>    
+                </div>
+
+
+                    <h1 className={style.alabado}>
+                        ¡ALABADO SEA JESUCRISTO!
+                    </h1>
+
+                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userName} Seleccioná una Opción en el Menú</h4>
+
             </div>
             }
         </> 
