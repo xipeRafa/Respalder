@@ -107,7 +107,7 @@ export default function App() {
 
     }
 
-console.log(location.pathname)
+
 
 
   return (
@@ -122,8 +122,8 @@ console.log(location.pathname)
         
 
         {
-            location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   
-                ? <h3 className={localStorage.getItem('userEmailLS') !== null ? 'd-none' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3>
+            location.pathname == '/Respalder/' && localStorage.getItem('userEmailLS') !== null   
+                ? ''
                 : <h3 className={localStorage.getItem('userEmailLS') !== null ? 'registroParroquial-h3' : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3> 
         }
       
