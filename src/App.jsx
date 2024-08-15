@@ -65,7 +65,7 @@ export default function App() {
     useEffect(() => {
 
         const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
-                    where('email', '==', localStorage.userEmailLS)
+                    where('email', '==', localStorage.getItem('userEmailLS'))
         )
 
         getDocs(data).then((resp) => {
