@@ -19,7 +19,7 @@ export default function MiParroquia() {
 
    
 
-    const [register, login, logout, stateLogin] = useLogin()
+    const [register, login, logout] = useLogin()
 
     //register (authApp, email, password)
     //login (authApp, email, password)
@@ -93,6 +93,7 @@ console.log(error)
 
     return (
         <>
+        {localStorage.getItem('userEmailLS') === null ?
             <div className={style.loginContainer}>
 
                 <div> <img src={imgA} /> </div>
@@ -139,6 +140,8 @@ console.log(error)
                 </div>
 
             </div>
+
+            :<p onClick={()=>logout()}>salir</p>}
         </> 
     );
 }

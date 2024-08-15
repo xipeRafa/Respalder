@@ -45,8 +45,6 @@ const useLogin = ( ) => {
 
 
 
-    const [stateLogin, setStateLogin] = useState(true);
-
 
 
     const login = (authApp, email, password) => {
@@ -56,7 +54,6 @@ const useLogin = ( ) => {
               // Signed in
               const user = userCredential.user
               localStorage.setItem('userEmailLS', user.email)
-              setStateLogin(!stateLogin)
               location.reload()
           })
           .catch((error) => {
@@ -81,14 +78,14 @@ const useLogin = ( ) => {
 
         localStorage.removeItem('userEmailLS')
 
-        setStateLogin(!stateLogin)
+        location.reload()
     }
 
 
 
 
 
-    return[register, login, logout, stateLogin]
+    return[register, login, logout]
 
 
 
