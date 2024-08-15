@@ -44,16 +44,14 @@ export default function Navbar() {
 
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
     
-        <NavLink to="/Respalder"> Bautismos</NavLink>
-        
+        <NavLink to="/Respalder">Mi Parroquia</NavLink>
+
+        <NavLink to="/Respalder/bautismos">Bautismos</NavLink>
         <NavLink to="/Respalder/comuniones"> Comuniones</NavLink>
         <NavLink to="/Respalder/confirmaciones"> Confirmaciones </NavLink>
-        
 
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
-
-        <NavLink to="/Respalder/miparroquia"> mi parroquia</NavLink>
         <NavLink to="/Respalder/usuarios"> Usuarios</NavLink>
      
     </div>   </>}

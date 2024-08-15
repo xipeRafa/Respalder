@@ -53,14 +53,11 @@ export default function App() {
 
     let fireBaseCollection 
 
-    if(location.pathname == '/Respalder'){
-        fireBaseCollection = 'bautismos'
-    }else{
-        fireBaseCollection = location.pathname.split('/')[2] 
-    }    
+
+    fireBaseCollection = location.pathname.split('/')[2] 
 
 
-
+console.log(fireBaseCollection)
 
     const [arrParroquiaState, setArrParroquiaState] = useState([])
     const [getArr, setGetArr] = useState(false)
@@ -137,7 +134,7 @@ export default function App() {
 
 
   return (
-    <div className='containerApp'>
+    <div className={localStorage.getItem('userEmailLS') !== null ? 'containerApp' : 'containerApp2'}>
     
       <Navbar />
 
@@ -149,14 +146,14 @@ export default function App() {
         }*/}
       
       <Routes>
-        <Route path="/Respalder" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder" element={<MiParroquia />}  />
 
         <Route path="/Respalder/confirmaciones" element={<Confirmaciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/comuniones" element={<Comuniones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
         <Route path="/Respalder/matrimonios" element={<Matrimonios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="/Respalder/defunciones" element={<Defunciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/Respalder/miparroquia" element={<MiParroquia />} />
+        <Route path="/Respalder/bautismos" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
         <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="*"  element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 
