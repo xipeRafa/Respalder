@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate} from 'react-router-dom';
 
-import { getDocs, collection, updateDoc, doc, addDoc } from 'firebase/firestore'
+import { getDocs, collection, updateDoc, doc, addDoc, where, query } from 'firebase/firestore'
 import { ref, uploadBytes, getBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 import './css/App.css'
@@ -57,7 +57,6 @@ export default function App() {
     fireBaseCollection = location.pathname.split('/')[2] 
 
 
-console.log(fireBaseCollection)
 
     const [arrParroquiaState, setArrParroquiaState] = useState([])
     const [getArr, setGetArr] = useState(false)
@@ -65,7 +64,9 @@ console.log(fireBaseCollection)
 
     useEffect(() => {
 
-        const data = collection(firestoreDB, fireBaseCollection || 'bautismos')
+        const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
+                    where('email', '==', localStorage.userEmailLS)
+        )
 
         getDocs(data).then((resp) => {
             setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }) ))
@@ -105,29 +106,6 @@ console.log(fireBaseCollection)
 
 
     }
-
-
-
-
- 
-
-
-
-
-
-
-
-    // const UpdateByIdInventario = async (id, obj) => {
-
-    //     const aaDoc = doc(db, 'inventario', id);
-
-    //     try {
-    //         await updateDoc(aaDoc, obj);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-
-    // }
 
 
 

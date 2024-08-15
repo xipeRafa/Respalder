@@ -92,6 +92,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                     },2000)
             }
             
+            objectState.email = localStorage.userEmailLS
             objectState.nombreBautismo = nombreBautismo.trim()  
             postRegister(fileState, objectState)
 
