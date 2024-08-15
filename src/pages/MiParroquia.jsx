@@ -103,7 +103,7 @@ console.log(error)
                     <div >   
                         <div    className={stateButtons ? style.borderB : style.borderBgray} 
                                 onClick={()=>{setStateButtons(true), setError('') }}>
-                                REGISTRARSE
+                                REGISTRO
                         </div>
 
                         <div    className={stateButtons ? style.borderBgray : style.borderB} 
