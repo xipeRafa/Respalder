@@ -691,7 +691,7 @@ img{width: 100%;}
     padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
     background-color: #fff;
     border: 1px solid #d1d1d1;
-    border-radius: 0px;
+    border-radius: 2px;
     box-shadow: none;
     box-sizing: border-box;
     color: #555;
@@ -761,7 +761,7 @@ img{width: 100%;}
     padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
     background-color: #fff;
     border: 1px solid #d1d1d1;
-    border-radius: 0px;
+    border-radius: 2px;
     box-shadow: none;
     box-sizing: border-box;
     margin: 1em 3em;

@@ -111,6 +111,13 @@
 	}
 	.loginContainer>*:first-child{
 		width: 100%;
+		height:100px;
+		/*background-image: ;*/
+		background-image: url('../pages/123.jpeg');
+/*		 background-size: 'contain';*/
+			background-size: 320px 100px;
+          background-repeat: 'no-repeat';
+          background-position: 'center';
 	}
 	.loginContainer>*:nth-child(2){
 		width: 100%;
