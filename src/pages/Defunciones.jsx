@@ -169,7 +169,7 @@ export default function Defunciones({postRegister, arrParroquiaState, setGetArr,
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Defunción con Nombre:</label>
-                                    <input type="text"  id='avatar1' name='nombreDefuncion' value={valueNameFinder} 
+                                    <input type="search"  id='avatar1' name='nombreDefuncion' value={valueNameFinder} 
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo de Esposo...'/>
                                 </div>
                                 <div>

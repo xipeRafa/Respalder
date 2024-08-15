@@ -168,7 +168,7 @@ export default function Matrimonios({postRegister, arrParroquiaState, setGetArr,
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Matrimonio con Nombre:</label>
-                                    <input type="text"  id='avatar1' name='nombreMatrimonio' value={valueNameFinder} 
+                                    <input type="search"  id='avatar1' name='nombreMatrimonio' value={valueNameFinder} 
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo de Esposo...'/>
                                 </div>
                                 <div>

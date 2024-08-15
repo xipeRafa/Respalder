@@ -172,7 +172,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Confirmación con Nombre:</label>
-                                    <input type="text"  id='avatar1' name='nombreConfirmacion' value={valueNameFinder} 
+                                    <input type="search"  id='avatar1' name='nombreConfirmacion' value={valueNameFinder} 
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
                                 </div>
                                 <div>
