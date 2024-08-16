@@ -96,19 +96,23 @@ export default function App() {
 
 
     const saveCat = (postBody) => {
+
         console.log(postBody)
+        delete postBody.password2
+        delete postBody.name
+        console.log(postBody)
+        
+        const postCollectionCat = collection(firestoreDB, 'cat');
 
-        // const postCollectionCat = collection(firestoreDB, 'cat');
 
-
-        // addDoc(postCollectionCat, postBody)
-        //     .then((resp) => {
-        //             conosle.log(resp)
-        //     })
-        //     .catch((error) => { 
-        //         console.log('postRegister Error, App,jsx, linea 82')
-        //         console.log(error)
-        //     })
+        addDoc(postCollectionCat, postBody)
+            .then((resp) => {
+                    conosle.log(resp)
+            })
+            .catch((error) => { 
+                console.log('postRegister Error, App,jsx, linea 82')
+                console.log(error)
+            })
     }
 
 

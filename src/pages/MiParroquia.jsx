@@ -48,19 +48,27 @@ export default function MiParroquia({saveCat}) {
 
         setError('')
 
-        localStorage.setItem('userEmailLS', name)
+        if (name.length < 1) {
+                setError("Nombre No Escrito");
+                return
+        }
 
-        if (password.length < 1) {
-              return setError("Nombre No Escrito");
+        if (email.length < 1) {
+                setError("Correo No Escrito");
+                return
         }
 
         if (password !== password2) {
-              return setError("Passwords No son Iguales");
+                setError("Passwords No son Iguales");
+                return
         }
 
         if (password.length < 6) {
-              return setError("La Clave es muy Corta Use 6 Caracteres Minimo");
+                setError("La Clave es muy Corta Use 6 Caracteres Minimo");
+                return
         }
+
+        localStorage.setItem('userEmailLS', name)
 
         register(authApp, email, password);
 
@@ -78,13 +86,15 @@ export default function MiParroquia({saveCat}) {
         setError('')
 
 
-        if (password.length < 1) {
-              return setError("Correo no Escrito");
+        if (email.length < 1) {
+                setError("Correo No Escrito");
+                return
         }
 
 
         if (password.length < 6) {
-              return setError("Claves es muy corta Use 6 caracteres Minimo");
+                setError("Claves es muy corta Use 6 caracteres Minimo");
+                return
         }
 
         login(authApp, email, password);
