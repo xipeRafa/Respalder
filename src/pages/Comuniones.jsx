@@ -47,6 +47,7 @@ export default function Comuniones({postRegister, arrParroquiaState, setGetArr, 
                     },2000)
             }
             
+            objectState.email = localStorage.userEmailLS
             objectState.nombreComunion = nombreComunion.trim()  
             postRegister(fileState, objectState)
 

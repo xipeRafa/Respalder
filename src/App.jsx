@@ -31,18 +31,6 @@ import Navbar from './components/Navbar';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 export default function App() {
 
 
@@ -50,10 +38,7 @@ export default function App() {
 
     const location = useLocation();
 
-
     let fireBaseCollection 
-
-
     fireBaseCollection = location.pathname.split('/')[2] 
 
 
@@ -110,6 +95,25 @@ export default function App() {
 
 
 
+    const saveCat = (postBody) => {
+        console.log(postBody)
+
+        // const postCollectionCat = collection(firestoreDB, 'cat');
+
+
+        // addDoc(postCollectionCat, postBody)
+        //     .then((resp) => {
+        //             conosle.log(resp)
+        //     })
+        //     .catch((error) => { 
+        //         console.log('postRegister Error, App,jsx, linea 82')
+        //         console.log(error)
+        //     })
+    }
+
+
+
+
   return (
     <div className={localStorage.getItem('userEmailLS') !== null ? 'containerApp' : 'containerApp2'}>
     
@@ -128,7 +132,7 @@ export default function App() {
         }
       
       <Routes>
-        <Route path="/Respalder" element={<MiParroquia />}  />
+        <Route path="/Respalder" element={<MiParroquia saveCat={saveCat}/>}  />
 
         <Route path="/Respalder/confirmaciones" element={<Confirmaciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
         <Route path="/Respalder/comuniones" element={<Comuniones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />

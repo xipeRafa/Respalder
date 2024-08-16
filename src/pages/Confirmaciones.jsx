@@ -47,7 +47,8 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
                             alert('Documento Guardado')
                     },2000)
             }
-              
+             
+            objectState.email = localStorage.userEmailLS  
             objectState.nombreConfirmacion = nombreConfirmacion.trim()
             postRegister(fileState, objectState)
 

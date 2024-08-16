@@ -1,5 +1,6 @@
 
 import { useEffect, useState} from 'react';
+
 import imgA from './abc.jpeg'
 
 import style from '../css/login.module.css'
@@ -10,41 +11,35 @@ import { authApp } from '../firebase/firebaseConfig';
 
 
 
-export default function MiParroquia() {
 
 
-   
 
-    const[stateButtons, setStateButtons]=useState(true)
 
-   
+export default function MiParroquia({saveCat}) {
+
+
+
 
     const [register, login, logout] = useLogin()
 
-    //register (authApp, email, password)
-    //login (authApp, email, password)
-
-   
+    const [error, setError] = useState('');
 
 
-
-const[objectState, setObjectState]=useState({
-    name:'', email:'', password:'', password2:''
-})
-
-
-const {name, email, password, password2} = objectState
-
-  const handlerObjectsState=(e)=>{
-        setError('')
-        const {name, value}=e.target
-        setObjectState({...objectState, [name]:value})
-  }
-
-  const [error, setError] = useState('');
+    const[objectState, setObjectState]=useState({
+            name:'', email:'', password:'', password2:''
+    })
 
 
-console.log(error)
+    const {name, email, password, password2} = objectState
+
+    const handlerObjectsState=(e)=>{
+            setError('')
+            const {name, value}=e.target
+            setObjectState({...objectState, [name]:value})
+    }
+
+    
+
 
 
 
@@ -53,7 +48,7 @@ console.log(error)
 
         setError('')
 
-        localStorage.setItem('userName', name)
+        localStorage.setItem('userEmailLS', name)
 
         if (password.length < 1) {
               return setError("Nombre No Escrito");
@@ -69,7 +64,13 @@ console.log(error)
 
         register(authApp, email, password);
 
+        saveCat(objectState)
+
     }
+
+
+
+
 
 
     const entrar = () => {
@@ -91,6 +92,17 @@ console.log(error)
     }
 
 
+    const[stateButtons, setStateButtons]=useState(true)
+
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -98,66 +110,61 @@ console.log(error)
         {localStorage.getItem('userEmailLS') === null ?
             <div className={style.loginContainer}>
 
-                <div> <img src={imgA} /> </div>
+                <div><img src={imgA} /></div>
 
                 <div>
 
-                    <div >   
+                    <div>   
                         <div    className={stateButtons ? style.borderB : style.borderBgray} 
                                 onClick={()=>{setStateButtons(true), setError('') }}>
-                                REGISTRO
+                                    REGISTRO
                         </div>
 
                         <div    className={stateButtons ? style.borderBgray : style.borderB} 
                                 onClick={()=>{setStateButtons(false), setError('')}}>
                                     ENTRAR
                         </div> 
-
                     </div>
+
+                    <div>
+                        {stateButtons ?
+                            <div className={style.inputBG}>  
+                                <div><input type="text" name='name'  onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
+                                <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
+                                <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
+                                <div><input type="password" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
+                                <div><button onClick={()=>enviar()} >ENVIAR</button></div>
+                                <span className={style.colorRed}>{error}</span>
+                            </div>
+                        :
+                            <div className={style.inputBG}>
+                                <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
+                                <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
+                                <div><button onClick={()=>entrar()}>ENTRAR</button></div>
+                                <span className={style.colorRed}>{error}</span>
+                            </div>
+                        }         
+                    </div>
+
+                </div>
+
+            </div>
+
+            :
 
                 <div>
 
-                    {stateButtons ?
-                        <div className={style.inputBG}>
-                            <div><input type="text" name='name'  onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
-                            <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
-                            <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
-                            <div><input type="password" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
-                            <div><button onClick={()=>enviar()} >ENVIAR</button></div>
-                               <span className={style.colorRed}>{error}</span>
-                        </div>
-
-                        :
-                        <div className={style.inputBG}>
-                            <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
-                            <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
-
-                            <div><button onClick={()=>entrar()}>ENTRAR</button></div>
-                            <span className={style.colorRed}>{error}</span>
-                        </div>
-                    }
-                         
+                    <div className={style.hello}>
+                        <span>{localStorage.userEmailLS.split('@')[0]}</span>
+                        <button onClick={()=>logout()}>SALIR</button>    
                     </div>
 
+                    <h1 className={style.alabado}>¡ALABADO SEA JESUCRISTO!</h1>
+
+                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userNameLS} Seleccioná una Opción en el Menú</h4>
+
                 </div>
 
-            </div>
-
-            :<div>
-
-                <div className={style.hello}>
-                    <span>{localStorage.userEmailLS.split('@')[0]}</span>
-                    <button onClick={()=>logout()}>SALIR</button>    
-                </div>
-
-
-                    <h1 className={style.alabado}>
-                        ¡ALABADO SEA JESUCRISTO!
-                    </h1>
-
-                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userName} Seleccioná una Opción en el Menú</h4>
-
-            </div>
             }
         </> 
     );

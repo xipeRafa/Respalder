@@ -46,7 +46,8 @@ export default function Matrimonios({postRegister, arrParroquiaState, setGetArr,
                             alert('Documento Guardado')
                     },2000)
             }
-            
+           
+            objectState.email = localStorage.userEmailLS
             objectState.nombreMatrimonio = nombreMatrimonio.trim()  
             postRegister(fileState, objectState)
 

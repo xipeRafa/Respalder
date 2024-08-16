@@ -47,6 +47,7 @@ export default function Defunciones({postRegister, arrParroquiaState, setGetArr,
                     },2000)
             }
             
+            objectState.email = localStorage.userEmailLS
             objectState.nombreDefuncion = nombreDefuncion.trim()    
             postRegister(fileState, objectState)
 
