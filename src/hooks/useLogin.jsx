@@ -24,10 +24,10 @@ const useLogin = ( ) => {
           console.error("code.error", error.code)
 
           const errorObj = {
-              "auth/email-already-in-use" : () => alert("El Correo ya esta en Uso"),
+              "auth/email-already-in-use" : () => alert("El Correo ya esta en Uso."),
               "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
               "auth/weak-password": () => alert("La Contraseña es muy débil."),
-              "auth/invalid-email": () => alert("El Correo No es Valido"),
+              "auth/invalid-email": () => alert("El Correo No es Valido."),
           };
 
           const mySwithFunction = (errorCode) => {
@@ -57,12 +57,21 @@ const useLogin = ( ) => {
               location.reload()
           })
           .catch((error) => {
+            
               console.log(error.code);
               console.log(error.message);
 
-              if (error.code == "auth/invalid-credential") {
-                  alert("Contraseña o Correo son Incorrrectos")
+              const errorObj = {
+                  "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
+                  "auth/invalid-credential": () => alert("Contraseña o Correo son Incorrrectos."),
+                  "auth/invalid-email": () => alert("El Correo No es Valido"),
+              };
+
+              const mySwithFunction = (errorCode) => {
+                  errorObj[errorCode]()
               }
+
+              mySwithFunction(error.code)
 
           })
 
@@ -79,7 +88,7 @@ const useLogin = ( ) => {
         localStorage.removeItem('userEmailLS')
 
         location.reload()
-        
+
     }
 
 
