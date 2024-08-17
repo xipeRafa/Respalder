@@ -8,15 +8,14 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                 nombreBautismo:'',
                 fechaBautismo:''
         })
-
+console.log(objectState.nombreBautismo)
 
         const { nombreBautismo, fechaBautismo } = objectState
 
 
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
-                setObjectState({...objectState, [name]:value })
-                setViewNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
+                setObjectState({...objectState, [name]:value.replace(/\b[a-z]/g,c=>c.toUpperCase())})
         }
 
 
@@ -61,7 +60,6 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
         const [nameFinder, setNameFinder] = useState('')
 
-        const [viewNameFinder, setViewNameFinder] = useState('')
 
 
 
@@ -93,8 +91,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
         const handlerNameFinder =({target})=>{
             const{ name, value } = target
-            setNameFinder(value)
-            setViewNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
+            setNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
 
 
@@ -125,7 +122,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
                                     <p>Respaldar FE de Bautismo</p> 
 
-                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={viewNameFinder} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
 
                                     <input type="date" name='fechaBautismo' value={fechaBautismo} placeholder='Fecha de Bautismo' onChange={(e)=>handlerObjectsState(e)} />
 
@@ -148,7 +145,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
-                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80' value={viewNameFinder}
+                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80' value={nameFinder}
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
                                             <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>

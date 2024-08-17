@@ -100,6 +100,8 @@ export default function MiParroquia({saveCat}) {
 
         login(authApp, email, password);
 
+        localStorage.setItem('userEmailLS', email)
+
     }
 
 
