@@ -141,10 +141,10 @@ console.log(name)
                     <div>
                         {stateButtons ?
                             <div className={style.inputBG}>  
-                                <div><input type="text" name='name'  onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
-                                <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
-                                <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
-                                <div><input type="password" name='password2'  onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
+                                <div><input type="text" name='name' value={name} onChange={(e)=>handlerObjectsState(e)} placeholder='Nombre'/></div> 
+                                <div><input type="email" name='email' value={email} onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div>
+                                <div><input type="password" name='password' value={password} onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div> 
+                                <div><input type="password" name='password2' value={password2} onChange={(e)=>handlerObjectsState(e)} placeholder='Confirmar Password'/></div>
                                 <div><button onClick={()=>enviar()} >ENVIAR</button></div>
                                 <span className={style.colorRed}>{error}</span>
                             </div>
