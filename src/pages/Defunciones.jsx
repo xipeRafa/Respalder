@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 
-export default function Defunciones({postRegister, arrParroquiaState, setGetArr, getArr}) {
+export default function Defunciones({postFile, arrParroquiaState, setGetArr, getArr}) {
 
 
       const[objectState, setObjectState]=useState({
@@ -49,7 +49,7 @@ export default function Defunciones({postRegister, arrParroquiaState, setGetArr,
             
             objectState.email = localStorage.userEmailLS
             objectState.nombreDefuncion = nombreDefuncion.trim()    
-            postRegister(fileState, objectState)
+            postFile(fileState, objectState)
 
             setObjectState({nombreDefuncion:'', fechaDefuncion:''})
 

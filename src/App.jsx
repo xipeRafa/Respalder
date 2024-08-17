@@ -77,9 +77,9 @@ console.log(arrParroquiaState)
 
     }, [getArr]) 
 
+
     const finderFireBase=(value)=>{
         setFinderState(value)
-        console.log('app==> 80',value)
     }
 
 
@@ -87,7 +87,7 @@ console.log(arrParroquiaState)
 
 
 
-    const postRegister = (selectedFile, postBody) => {
+    const postFile = (selectedFile, postBody) => {
 
 
         const postCollection = collection(firestoreDB, fireBaseCollection || 'bautismos');
@@ -105,7 +105,7 @@ console.log(arrParroquiaState)
 
             })
             .catch((error) => { 
-                console.log('postRegister Error, App,jsx, linea 82')
+                console.log('postFile Error, App,jsx, linea 82')
                 console.log(error)
             })
 
@@ -157,15 +157,15 @@ console.log(arrParroquiaState)
       <Routes>
         <Route path="/Respalder" element={<MiParroquia saveCat={saveCat}/>}  />
 
-        <Route path="/Respalder/confirmaciones" element={<Confirmaciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/Respalder/comuniones" element={<Comuniones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
-        <Route path="/Respalder/matrimonios" element={<Matrimonios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder/confirmaciones" element={<Confirmaciones postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/Respalder/comuniones" element={<Comuniones postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder/matrimonios" element={<Matrimonios postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="/Respalder/defunciones" element={<Defunciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/Respalder/bautismos" element={<Bautisos finderFireBase={finderFireBase} postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
-        <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder/defunciones" element={<Defunciones postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
+        <Route path="/Respalder/bautismos" element={<Bautisos finderFireBase={finderFireBase} postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder/usuarios" element={<Usuarios postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
-        <Route path="*"  element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 
+        <Route path="*"  element={<Bautisos postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 
       </Routes>
     </div>
   );

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 
-export default function Comuniones({postRegister, arrParroquiaState, setGetArr, getArr}) {
+export default function Comuniones({postFile, arrParroquiaState, setGetArr, getArr}) {
 
 
       const[objectState, setObjectState]=useState({
@@ -49,7 +49,7 @@ export default function Comuniones({postRegister, arrParroquiaState, setGetArr, 
 
             objectState.email = localStorage.userEmailLS
             objectState.nombreComunion = nombreComunion.trim()  
-            postRegister(fileState, objectState)
+            postFile(fileState, objectState)
 
             setObjectState({nombreComunion:'', fechaComunion:''})
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
+export default function Bautisos({postFile, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
 
 
         const[objectState, setObjectState]=useState({
@@ -43,7 +43,7 @@ console.log(objectState.nombreBautismo)
             
             objectState.email = localStorage.userEmailLS
             objectState.nombreBautismo = nombreBautismo.trim()  
-            postRegister(fileState, objectState)
+            postFile(fileState, objectState)
 
             setObjectState({nombreBautismo:'', fechaBautismo:''})
 
@@ -129,7 +129,7 @@ console.log(objectState.nombreBautismo)
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
-                                    <input type="file"  name="fileBautismo" onChange={(e)=>handlerGetFile(e)}  />
+                                    <input type="file"  accept=".pdf" name="fileBautismo" onChange={(e)=>handlerGetFile(e)}  />
 
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR

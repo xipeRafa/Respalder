@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 
-export default function Confirmaciones({postRegister, arrParroquiaState, setGetArr, getArr}) {
+export default function Confirmaciones({postFile, arrParroquiaState, setGetArr, getArr}) {
 
 
       const[objectState, setObjectState]=useState({
@@ -50,7 +50,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
              
             objectState.email = localStorage.userEmailLS  
             objectState.nombreConfirmacion = nombreConfirmacion.trim()
-            postRegister(fileState, objectState)
+            postFile(fileState, objectState)
 
             setObjectState({nombreConfirmacion:'', fechaConfirmacion:''})
 

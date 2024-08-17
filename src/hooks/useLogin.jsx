@@ -19,6 +19,8 @@ const useLogin = ( ) => {
           
           login(authApp, email, password);
 
+          localStorage.setItem('userEmailLS', email)
+
       } catch (error) {
 
           console.error("code.error", error.code)
@@ -93,13 +95,11 @@ const useLogin = ( ) => {
 
 
 
-
-
     return[register, login, logout]
 
 
-
 }
+
 
 export default useLogin;
 

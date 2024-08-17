@@ -39,7 +39,7 @@ export default function MiParroquia({saveCat}) {
     }
 
     
-
+console.log(name)
 
 
 
@@ -68,12 +68,11 @@ export default function MiParroquia({saveCat}) {
                 return
         }
 
-        localStorage.setItem('userEmailLS', email)
-        localStorage.setItem('userName', name)
-
         register(authApp, email, password);
 
         saveCat(objectState)
+
+        localStorage.setItem('userName', name)
 
     }
 
