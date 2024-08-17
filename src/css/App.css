@@ -92,11 +92,12 @@ label{
 /*	.formInfoToFind>div:first-child{
 		margin-bottom: 1em;
 	}*/
-	
-
-	.formInfoToFind>div>input:nth-child(2){
+	.formInfoToFind>div>input{
 		width: 100%;
 	}
+	
+
+	
 	.formInfoToSave>p{
 		font-weight: 500;
 		margin-top: 0;
@@ -106,6 +107,7 @@ label{
 		font-weight: 500!important;
 	}
 	.btn-buscar{
+		width: 100%;
 		margin-top: 12px;
 		margin-left: 0;
 	}
@@ -217,7 +219,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 @media (max-width:1160px){
 	.cerrar{
-		margin-bottom: 30px;
+		margin-bottom: 10px;
 	}
 }
 
@@ -281,8 +283,9 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 	.btn-buscar{
 		width: 100%;
-			margin-left: 0;
-			margin-top: 12px;
+		margin-left: 0;
+		margin-top: 28px;
+		margin-bottom: 10px;
 	}
 	
 }

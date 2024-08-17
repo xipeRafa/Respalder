@@ -66,13 +66,20 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         
 
 
-        const [nameFinder, setNameFinder] = useState(null)
+        const [nameFinder, setNameFinder] = useState('')
 
 
 
 console.log('nameFinder:', nameFinder)
 
         const buscarEnFirebase=()=>{
+
+            if(nameFinder.length<=0){
+                // alert('campo de busqueda vacio')
+                setEmptyState('Campo de Busqueda Vacio  ✘ ')
+                return
+            }
+
             finderFireBase(nameFinder) 
             setGetArr(!getArr) 
 
@@ -150,7 +157,10 @@ console.log('nameFinder:', nameFinder)
                                 <p  className={emptyState ? 'd-none' : 'cerrar'} onClick={()=>setEmptyState(!emptyState)}>
                                         Cerrar Busqueda ✘ 
                                 </p>
-
+                                  <p  className={!emptyState ? 'd-none' : 'no-encontrado'} onClick={()=>setEmptyState(true)}>
+                                        {emptyState}  
+                                </p>
+                                 
                               
 
                                 {/*<p   onClick={} className={arrParroquiaState.length === 0 ? 'd-none' : 'no-encontrado'}}>No Encontrado ✘</p>*/}
