@@ -68,7 +68,8 @@ export default function MiParroquia({saveCat}) {
                 return
         }
 
-        localStorage.setItem('userEmailLS', name)
+        localStorage.setItem('userEmailLS', email)
+        localStorage.setItem('userName', name)
 
         register(authApp, email, password);
 
@@ -171,7 +172,7 @@ export default function MiParroquia({saveCat}) {
 
                     <h1 className={style.alabado}>¡ALABADO SEA JESUCRISTO!</h1>
 
-                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userEmailLS} Seleccioná una Opción en el Menú</h4>
+                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userName} Seleccioná una Opción en el Menú</h4>
 
                 </div>
 
