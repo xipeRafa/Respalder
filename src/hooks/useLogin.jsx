@@ -37,6 +37,8 @@ const useLogin = ( ) => {
           }
 
           mySwithFunction(error.code)
+
+          location.reload()
       }
 
 
@@ -74,6 +76,8 @@ const useLogin = ( ) => {
               }
 
               mySwithFunction(error.code)
+              
+              location.reload()
 
           })
 
