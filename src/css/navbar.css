@@ -3,6 +3,7 @@
 .navBar{
     width: 100%;
     margin-bottom: 50px;
+    user-select: none;
 }
 
 /*@media (max-width: 900px) {

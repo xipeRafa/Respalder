@@ -81,12 +81,19 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
             }
 
             finderFireBase(nameFinder) 
-            setGetArr(!getArr) 
+            setGetArr(!getArr)  
 
+            setTimeout(()=>{
+                setEmptyState(false)
+             },2200) 
+            
             if(arrParroquiaState.length>=1){
                 setEmptyState(false)
-                console.log('false')
-            }       
+            }else{
+                setEmptyState('Buscando...')
+                
+            }  
+
         }
 
 

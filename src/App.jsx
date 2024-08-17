@@ -60,6 +60,8 @@ export default function App() {
     const [getArr, setGetArr] = useState(false)
 console.log(arrParroquiaState)
 
+
+
     useEffect(() => {
 
         const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
@@ -75,7 +77,7 @@ console.log(arrParroquiaState)
 
     }, [getArr]) 
 
- const finderFireBase=(value)=>{
+    const finderFireBase=(value)=>{
         setFinderState(value)
         console.log('app==> 80',value)
     }
