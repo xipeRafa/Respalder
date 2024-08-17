@@ -9,7 +9,7 @@ import { useState } from "react";
 //import zip from 'jszip'
 //import JSZip from 'jszip';
 
-export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr}) {
+export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
 
 
         const[objectState, setObjectState]=useState({
@@ -23,7 +23,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
-                setObjectState({...objectState, [name]:value.replace(/\b\w/g, l => l.toUpperCase())})
+                setObjectState({...objectState, [name]:value })
         }
 
 
@@ -112,7 +112,17 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const [nameFinder, setNameFinder] = useState(null)
 
 
-        const [valueNameFinder, setValueNameFinder] = useState('')
+        //const [valueNameFinder, setValueNameFinder] = useState('')
+
+console.log('nameFinder:', nameFinder)
+
+        const buscarEnFirebase=()=>{
+            finderFireBase(nameFinder) //meter en boton de buscar   
+            console.log('click') 
+            setGetArr(!getArr)        
+        }
+
+
 
         const handlerNameFinder =({target})=>{
 
@@ -120,13 +130,14 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
             const{ name, value } = target
 
-            setValueNameFinder(value.replace(/\b\w/g, l => l.toUpperCase()))
+            //setValueNameFinder(value.replace(/\b\w/g, l => l.toUpperCase()))
+            setNameFinder(value)
 
             if(value.length>4){
 
-                setGetArr(!getArr)
+                //setGetArr(!getArr)
             
-                let found = arrParroquiaState.filter((el) => el[name].indexOf(value.replace(/\b\w/g, l => l.toUpperCase())) > -1)
+                let found = arrParroquiaState.filter((el) => el[name].indexOf(value) > -1)
 
                 if(found.length>=1){
                         setNameFinder(found[0][name])
@@ -214,9 +225,11 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
-                                    <input type="search"  id='avatar1' name='nombreBautismo' value={valueNameFinder} 
+                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80'
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
+                                            <button className='btn-buscar' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
+
                                 <div>
                                     <label htmlFor="avatar2">Buscar Bautismo con Fecha:</label>
                                     <input type="date" id='avatar2' value={dateFinder} name='fechaBautismo' 
@@ -226,7 +239,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 
 
-                                <p  className={nameFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setNameFinder(null)}>
+                          {/*      <p  className={nameFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setNameFinder(null)}>
                                         Cerrar Busquedas ✘ 
                                 </p>
 
@@ -234,7 +247,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                         Cerrar Busquedas ✘
                                 </p>
 
-                                <p  className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)}>No Encontrado ✘</p>
+                                <p  className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)}>No Encontrado ✘</p>*/}
 
 
 
@@ -242,7 +255,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
                                         nameFinder !== null ? 
 
                                         <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.nombreBautismo === nameFinder).map((el, i)=>(
+                                            {arrParroquiaState.map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombreBautismo}</p>

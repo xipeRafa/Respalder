@@ -18,7 +18,7 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
 
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
-                setObjectState({...objectState, [name]:value.replace(/\b\w/g, l => l.toUpperCase())})
+                setObjectState({...objectState, [name]:value})
         }
 
 
@@ -78,14 +78,14 @@ export default function Confirmaciones({postRegister, arrParroquiaState, setGetA
 
             const{ name, value } = target
 
-            setValueNameFinder(value.replace(/\b\w/g, l => l.toUpperCase()))
+            setValueNameFinder(value)
 
             if(value.length>4){
 
                 setGetArr(!getArr)
 
             
-                let found = arrParroquiaState.filter((el) => el[name].indexOf(value.replace(/\b\w/g, l => l.toUpperCase())) > -1)
+                let found = arrParroquiaState.filter((el) => el[name].indexOf(value) > -1)
 
                 if(found.length>=1){
                         setNameFinder(found[0][name])

@@ -89,13 +89,12 @@ label{
 
 		padding: 2rem;
 	}
-	.formInfoToFind>div:first-child{
+/*	.formInfoToFind>div:first-child{
 		margin-bottom: 1em;
-	}
-	.formInfoToFind>div:nth-child(2){
+	}*/
+	
 
-	}
-	.formInfoToFind>div>input{
+	.formInfoToFind>div>input:nth-child(2){
 		width: 100%;
 	}
 	.formInfoToSave>p{
@@ -106,6 +105,11 @@ label{
 	label{
 		font-weight: 500!important;
 	}
+	.btn-buscar{
+		margin-top: 12px;
+		margin-left: 0;
+	}
+	
 
 }
 
@@ -234,13 +238,13 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	display: block;
 }
 
-/*
+
 .lupita{
 	padding: 0;
 	position: relative;
 	font-size: 22px;
 	font-weight: 100;
-}*/
+}
 
 .logo{
 	width: 30%;
@@ -254,6 +258,33 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 		padding: 0;
 
 	}
+}
+
+.btn-buscar{
+	border: none;
+	width: 80px;
+	height: 37px;
+	padding-bottom:8px ;
+	padding-top:4.5px ;
+	margin-left: 2px;
+		border-radius: 2px;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	}
+
+@media(max-width:680px){
+	.logo{
+		margin-left: 0;
+		width: 100%;
+		padding: 0;
+
+	}
+
+	.btn-buscar{
+		width: 100%;
+			margin-left: 0;
+			margin-top: 12px;
+	}
+	
 }
 
 

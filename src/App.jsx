@@ -34,6 +34,17 @@ import Navbar from './components/Navbar';
 export default function App() {
 
 
+    function capitalizarPrimeraLetra(str) {
+
+        let a = str.charAt(0).toUpperCase() + str.slice(1) 
+            
+        if(str.slice(-2, -1) === 'e'){
+            return 'nombre'+a.slice(0, -2)
+        }else{
+            return 'nombre'+a.slice(0, -1)
+        }
+
+    }
 
 
     const location = useLocation();
@@ -41,26 +52,33 @@ export default function App() {
     let fireBaseCollection 
     fireBaseCollection = location.pathname.split('/')[2] 
 
+    let finderCollection = capitalizarPrimeraLetra(fireBaseCollection || 'a')
+    const [finderState, setFinderState]=useState('')
 
 
     const [arrParroquiaState, setArrParroquiaState] = useState([])
     const [getArr, setGetArr] = useState(false)
-
+console.log(arrParroquiaState)
 
     useEffect(() => {
 
         const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
-                    where('email', '==', localStorage.getItem('userEmailLS'))
+                    where('email', '==', localStorage.getItem('userEmailLS')),
+                     where(finderCollection, '==', finderState.trim())
         )
 
         getDocs(data).then((resp) => {
             setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }) ))
         }).catch(err=>{
-             console.error(err)
+            console.error(err)
         })
 
     }, [getArr]) 
 
+ const finderFireBase=(value)=>{
+        setFinderState(value)
+        console.log('app==> 80',value)
+    }
 
 
    
@@ -97,24 +115,23 @@ export default function App() {
 
     const saveCat = (postBody) => {
 
-        console.log(postBody)
-        delete postBody.password2
+        delete postBody.password
         delete postBody.name
-        console.log(postBody)
-        
+
         const postCollectionCat = collection(firestoreDB, 'cat');
 
 
         addDoc(postCollectionCat, postBody)
             .then((resp) => {
-                    conosle.log(resp)
+                console.log(resp)
             })
             .catch((error) => { 
-                console.log('postRegister Error, App,jsx, linea 82')
+                console.log('saveCat Error, App.jsx, linea 113')
                 console.log(error)
             })
     }
 
+   
 
 
 
@@ -143,7 +160,7 @@ export default function App() {
         <Route path="/Respalder/matrimonios" element={<Matrimonios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="/Respalder/defunciones" element={<Defunciones postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}/>} />
-        <Route path="/Respalder/bautismos" element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
+        <Route path="/Respalder/bautismos" element={<Bautisos finderFireBase={finderFireBase} postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
         <Route path="/Respalder/usuarios" element={<Usuarios postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} />
 
         <Route path="*"  element={<Bautisos postRegister={postRegister} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} />} /> 
