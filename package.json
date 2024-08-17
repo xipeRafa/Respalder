@@ -12,12 +12,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "file-saver": "^2.0.5",
     "firebase": "^10.12.2",
     "gh-pages": "^6.1.1",
-    "jszip": "^3.10.1",
     "react": "^18.3.1",
-    "react-datepicker": "^7.3.0",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0"
   },

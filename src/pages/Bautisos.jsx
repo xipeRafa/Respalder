@@ -1,13 +1,5 @@
 import { useState } from "react";
 
-//import DatePickerComponent from '../components/datePicker/DatePickerComponent'
-
-//import {saveAs} from 'file-saver'
-
-//var zip =require('jszip')()
-
-//import zip from 'jszip'
-//import JSZip from 'jszip';
 
 export default function Bautisos({postRegister, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
 

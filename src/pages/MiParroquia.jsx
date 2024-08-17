@@ -171,7 +171,7 @@ export default function MiParroquia({saveCat}) {
 
                     <h1 className={style.alabado}>¡ALABADO SEA JESUCRISTO!</h1>
 
-                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userNameLS} Seleccioná una Opción en el Menú</h4>
+                    <h4><b>¡Hola!</b> Bienvenido {localStorage.userEmailLS} Seleccioná una Opción en el Menú</h4>
 
                 </div>
 
