@@ -28,55 +28,12 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 
 
-
-       
-
         const[fileState, setFileState]=useState('')
 
-        //const[fileStateBase64, setFileStateBase64]=useState([])
 
         const handlerGetFile =(event)=>{
                 setFileState(event.target.files[0])   
         }
-
-
-
-                    // let arrArchivos=[]
-
-                    // Array.from(event.target.files).forEach(el=>{
-
-                    //     let reader = new FileReader()
-                    //     reader.readAsDataURL(el)
-                    //     reader.onload=function(){
-                    //         let arr = []
-                    //         let base64 = reader.result
-                    //         arr=base64.split(',')
-                    //         arrArchivos.push({base64: arr[1], name:el.name})
-                    //     }
-                    // })
-
-                    // setFileStateBase64({...fileStateBase64, arrArchivos})
-
-
-
-        
-
-        // const zip = new JSZip()
-
-        // const downLoadZip64=()=>{
-        //          const {arrArchivos}=fileStateBase64
-
-        //             arrArchivos.map(el=>{
-        //                 zip.file(el.name, el.base64, {base64:true})
-        //             })
-
-        //             zip.generateAsync({type:'blod'})
-        //                 .then(function(content){
-        //                     saveAs(content, 'semamaron.zip')
-        //                 })      
-        // }
-
-
 
 
         const submit=()=>{
@@ -104,7 +61,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
 //=-=-=-= FINDER -=-=-=-=-==-=-=-=-=
         
-        const [emptyState, setEmptyState] = useState(false)
+        const [emptyState, setEmptyState] = useState(true)
 
         
 
@@ -112,66 +69,26 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const [nameFinder, setNameFinder] = useState(null)
 
 
-        //const [valueNameFinder, setValueNameFinder] = useState('')
 
 console.log('nameFinder:', nameFinder)
 
         const buscarEnFirebase=()=>{
-            finderFireBase(nameFinder) //meter en boton de buscar   
-            console.log('click') 
-            setGetArr(!getArr)        
+            finderFireBase(nameFinder) 
+            setGetArr(!getArr) 
+
+            if(arrParroquiaState.length>=1){
+                setEmptyState(false)
+                console.log('false')
+            }       
         }
-
-
 
         const handlerNameFinder =({target})=>{
-
-            setDateFinder(null)
-
             const{ name, value } = target
-
-            //setValueNameFinder(value.replace(/\b\w/g, l => l.toUpperCase()))
             setNameFinder(value)
-
-            if(value.length>4){
-
-                //setGetArr(!getArr)
-            
-                let found = arrParroquiaState.filter((el) => el[name].indexOf(value) > -1)
-
-                if(found.length>=1){
-                        setNameFinder(found[0][name])
-                        setEmptyState(false)
-                }else{
-                        setEmptyState(true)
-                }
-
-
-            }
-           
         }
 
 
 
-
-        const[dateFinder, setDateFinder]=useState(null)
-
-        const handlerDateFinder=({target})=>{
-
-            setNameFinder(null)
-            const{ name, value } = target
-
-            let found = arrParroquiaState.filter(el => el[name] == value)
-
-            if(found.length>=1){
-                    setGetArr(!getArr)
-                    setDateFinder(value)
-                    setEmptyState(false)   
-            }else{
-                    setEmptyState(true)
-            } 
-
-        }
 
 
         
@@ -200,9 +117,8 @@ console.log('nameFinder:', nameFinder)
 
                                     <input type="text" name='nombreBautismo' placeholder='Nombre...' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
 
-                                    <input type="date" name='fechaBautismo' value={fechaBautismo} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="date" name='fechaBautismo' value={fechaBautismo} placeholder='Fecha de Bautismo' onChange={(e)=>handlerObjectsState(e)} />
 
-                                    {/*<DatePickerComponent />*/}
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
@@ -212,9 +128,6 @@ console.log('nameFinder:', nameFinder)
                                         GUARDAR
                                     </button>
 
-                                  {/*  <button onClick={()=>downLoadZip64() }>
-                                        zip
-                                    </button>*/}
 
                                 </div>    
 
@@ -230,31 +143,24 @@ console.log('nameFinder:', nameFinder)
                                             <button className='btn-buscar' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
 
-                                <div>
-                                    <label htmlFor="avatar2">Buscar Bautismo con Fecha:</label>
-                                    <input type="date" id='avatar2' value={dateFinder} name='fechaBautismo' 
-                                            onChange={(e)=>handlerDateFinder(e)} />
-                                </div>
 
 
 
 
-                          {/*      <p  className={nameFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setNameFinder(null)}>
-                                        Cerrar Busquedas ✘ 
+                                <p  className={emptyState ? 'd-none' : 'cerrar'} onClick={()=>setEmptyState(!emptyState)}>
+                                        Cerrar Busqueda ✘ 
                                 </p>
 
-                                <p  className={dateFinder === null ? 'd-none' : 'cerrar'} onClick={()=>setDateFinder(null)}>
-                                        Cerrar Busquedas ✘
-                                </p>
+                              
 
-                                <p  className={!emptyState ? 'd-none' : 'no-encontrado' } onClick={()=>setEmptyState(false)}>No Encontrado ✘</p>*/}
+                                {/*<p   onClick={} className={arrParroquiaState.length === 0 ? 'd-none' : 'no-encontrado'}}>No Encontrado ✘</p>*/}
 
 
 
-                                {
-                                        nameFinder !== null ? 
+                                
+                                       
 
-                                        <div className='w-100'>
+                                        <div className={emptyState ? 'd-none' : 'w-100'} >
                                             {arrParroquiaState.map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
@@ -268,23 +174,7 @@ console.log('nameFinder:', nameFinder)
                                         </div> 
 
 
-                                        :
-
-                                        <div className='w-100'>
-                                            {arrParroquiaState.filter(el => el.fechaBautismo === dateFinder).map((el, i)=>(
-                                                <div key={i}>
-                                                    <hr />
-                                                    <p className='textMarc'><span>Nombre:</span> {el.nombreBautismo}</p>
-                                                    <p><span>Fecha:</span> {el.fechaBautismo}</p>
-                                                    <p><span>Documento:</span> {el.fileName}</p>
-                                                    <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
-                                                    <hr />
-                                                </div>
-                                            
-                                            ))}
-                                        </div>
-
-                                    }
+                                     
 
                             </div>
 
