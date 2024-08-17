@@ -24,6 +24,7 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
                 setObjectState({...objectState, [name]:value })
+                setViewNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
 
 
@@ -68,14 +69,13 @@ export default function Bautisos({postRegister, arrParroquiaState, setGetArr, ge
 
         const [nameFinder, setNameFinder] = useState('')
 
+        const [viewNameFinder, setViewNameFinder] = useState('')
 
 
-console.log('nameFinder:', nameFinder)
 
         const buscarEnFirebase=()=>{
 
             if(nameFinder.length<=0){
-                // alert('campo de busqueda vacio')
                 setEmptyState('Campo de Busqueda Vacio  ✘ ')
                 return
             }
@@ -89,9 +89,14 @@ console.log('nameFinder:', nameFinder)
             }       
         }
 
+
+
+
+
         const handlerNameFinder =({target})=>{
             const{ name, value } = target
             setNameFinder(value)
+            setViewNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
 
 
@@ -122,14 +127,14 @@ console.log('nameFinder:', nameFinder)
 
                                     <p>Respaldar FE de Bautismo</p> 
 
-                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={viewNameFinder} onChange={(e)=>handlerObjectsState(e)} />
 
                                     <input type="date" name='fechaBautismo' value={fechaBautismo} placeholder='Fecha de Bautismo' onChange={(e)=>handlerObjectsState(e)} />
 
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
-                                    <input type="file"  name="fileBautismo" onChange={(e)=>handlerGetFile(e)} />
+                                    <input type="file"  name="fileBautismo" onChange={(e)=>handlerGetFile(e)}  />
 
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
@@ -145,7 +150,7 @@ console.log('nameFinder:', nameFinder)
 
                                 <div>
                                     <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
-                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80'
+                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80' value={viewNameFinder}
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
                                             <button className='btn-buscar' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
