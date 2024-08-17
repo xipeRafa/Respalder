@@ -99,7 +99,6 @@ console.log(name)
 
         login(authApp, email, password);
 
-        localStorage.setItem('userEmailLS', email)
 
     }
 
