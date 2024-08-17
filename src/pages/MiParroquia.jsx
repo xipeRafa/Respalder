@@ -128,12 +128,12 @@ console.log(name)
 
                     <div>   
                         <div    className={stateButtons ? style.borderB : style.borderBgray} 
-                                onClick={()=>{setStateButtons(true), setError('') }}>
+                                onClick={()=>{setStateButtons(true), setError(''), setObjectState({name:'', email:'', password:'', password2:''}) }}>
                                     REGISTRO
                         </div>
 
                         <div    className={stateButtons ? style.borderBgray : style.borderB} 
-                                onClick={()=>{setStateButtons(false), setError('')}}>
+                                onClick={()=>{setStateButtons(false), setError(''), setObjectState({name:'', email:'', password:'', password2:''}) }}>
                                     ENTRAR
                         </div> 
                     </div>
@@ -150,8 +150,8 @@ console.log(name)
                             </div>
                         :
                             <div className={style.inputBG}>
-                                <div><input type="email" name='email' onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
-                                <div><input type="password" name='password'  onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
+                                <div><input type="email" name='email' value={email} onChange={(e)=>handlerObjectsState(e)} placeholder='Correo'/></div> 
+                                <div><input type="password" name='password' value={password} onChange={(e)=>handlerObjectsState(e)} placeholder='Password'/></div>
                                 <div><button onClick={()=>entrar()}>ENTRAR</button></div>
                                 <span className={style.colorRed}>{error}</span>
                             </div>
