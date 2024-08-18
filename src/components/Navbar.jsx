@@ -21,6 +21,23 @@ export default function Navbar() {
 // navBar2-hamburger-menu  
 // navBar3-hamburger-menu3  
 
+    const nowDate =()=> {   // 'Viernes, 16 de Agosto de 2024'
+
+        const options = {
+            weekday: "long", // narrow, short
+            year: "numeric", // 2-digit
+            month: "long", // numeric, 2-digit, narrow, long
+            day: "numeric", // 2-digit
+            //hour:'numeric',
+            //minute:'numeric',
+            //second:'numeric',
+        }
+
+        return new Date().toLocaleString('es-ES', options)
+      
+    }
+
+
 
   return (
 
@@ -43,8 +60,8 @@ export default function Navbar() {
     </div>
 
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
-    
-        <NavLink to="/Respalder">Mi Parroquia</NavLink>
+         
+        <NavLink to="/Respalder" className='no-bg'>Mi Parroquia</NavLink>
 
         <NavLink to="/Respalder/bautismos">Bautismos</NavLink>
         <NavLink to="/Respalder/comuniones"> Comuniones</NavLink>
@@ -53,7 +70,10 @@ export default function Navbar() {
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
         {/*<a href='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>*/}
-        <a href='#' className='red'>{new Date().toLocaleString().slice(0,9)}</a>
+        {/*<a href='#' className='red'>{new Date().toLocaleString().slice(0,9)}</a>*/}
+        <NavLink to="/Respalder/Publicidad" className='red'>{nowDate()}</NavLink>
+       
+        
      
     </div>   </>}
 

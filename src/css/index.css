@@ -772,7 +772,7 @@ img{width: 100%;}
 
   }
 
-  @media(max-width:1160px){
+  @media(max-width:900px){
       input[type="file"]{
         margin: 1em 1em;
       }
@@ -1337,13 +1337,13 @@ template {
 
 
 input[type="date"]{
-  min-width: calc(99% - 28px);
+    min-width: calc(99% - 28px);
 }
 
-@media(min-width:1160px){
+@media(min-width:920px){
     input[type="date"]{
-  min-width:6%;
-}
+      min-width:6%;
+    }
 }
 
 

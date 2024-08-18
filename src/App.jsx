@@ -11,8 +11,9 @@ import './css/App.css'
 import { firestoreDB, storageDocs } from './firebase/firebaseConfig';
 
 
-import Bautisos from './pages/Bautisos';
-import MiParroquia from './pages/MiParroquia';
+import Bautisos from './pages/Bautisos'
+import MiParroquia from './pages/MiParroquia'
+import Publicidad from './pages/Publicidad';
 
 
 import Navbar from './components/Navbar';
@@ -142,38 +143,39 @@ export default function App() {
 
 
 
-  return (
-    <div className={localStorage.getItem('userEmailLS') !== null ? 'containerApp' : 'containerApp2'}>
+    return (
+        <div className={localStorage.getItem('userEmailLS') !== null ? 'containerApp' : 'containerApp2'}>
     
-        <Navbar />
+            <Navbar />
    
 
-        {
-            location.pathname == '/Respalder/' && localStorage.getItem('userEmailLS') !== null   
-                ? ''
-                : <h3 className={localStorage.getItem('userEmailLS') !== null 
+            {
+                location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   
+                    ? ''
+                    : <h3 className={localStorage.getItem('userEmailLS') !== null 
                         ? 'registroParroquial-h3' 
-                        : 'registroParroquial-h3-2'} >RESPALDER PARROQUIAL</h3> 
-        }
+                        : 'registroParroquial-h3-2'}>RESPALDER PARROQUIAL</h3> 
+            }
 
       
-        <Routes>
+            <Routes>
 
-            <Route path="/Respalder/" element={<MiParroquia saveCat={saveCat}/>}  />
+                <Route path="/Respalder/" element={<MiParroquia saveCat={saveCat}/>} />
+                <Route path="/Respalder/publicidad" element={<Publicidad />} />
 
-            <Route path="*"  element={ 
+                <Route path="*"  element={ 
 
-                location.pathname !== '/Respalder' && localStorage.getItem('userEmailLS') !== null &&
-                     <Bautisos finderCollection={finderCollection} finderFireBase={finderFireBase} 
+                    location.pathname !== '/Respalder' && localStorage.getItem('userEmailLS') !== null &&
+                        <Bautisos finderCollection={finderCollection} finderFireBase={finderFireBase} 
                             postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}
-                    />
+                        />
 
-            } />
+                }/>
 
-        </Routes>
+            </Routes>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 

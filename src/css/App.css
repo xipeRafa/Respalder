@@ -9,7 +9,7 @@
 
 
 .ButtonsNuevoBuscar>button{
-	width: 300px;
+	width: 290px;
 	text-transform: uppercase;
 	margin-bottom: 36px;
 /*	background-color: rgb(232,242,247);*/
@@ -31,6 +31,7 @@
 .formInfoToSave>p{
 	font-weight: 100;
 	color: #555;
+	padding-left: 0;
 }
 
 .formInfoToSave>*{
@@ -57,6 +58,7 @@
 label{
 	color: #444;
 	font-weight: 100!important;
+	padding-left: 0;
 }
 
 .formInfoToSave>.button-primary{
@@ -69,11 +71,12 @@ label{
 }
 
 
-@media(max-width:1160px){
+@media(max-width:920px){
 	.formInfoToSave>*{
 		margin: 1em;
 	}
 	.formInfoToSave>.button-primary{
+
 		margin: 34px .8em 0px;
 		margin-left: auto;
 		margin-right: auto;
@@ -119,7 +122,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
 
-@media(max-width:1000px){
+@media(max-width:920px){
 	.registroParroquial-h3{
 		font-size: 1.6em;
 		margin: 0;
@@ -141,7 +144,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
 
-@media(max-width:1000px){
+@media(max-width:920px){
 	.registroParroquial-h3-2{
 		font-size: 1.6em;
 		margin: 0;
@@ -173,7 +176,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 .cerrar{
 	width: 100%;
 	text-align: center;
-	color:red;
+	color:red!important;
 	cursor: pointer;
 	margin: 0;
 	margin-top: 14px;
@@ -181,7 +184,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	user-select: none;
 }
 
-@media (max-width:1160px){
+@media (max-width:920px){
 	.cerrar{
 		margin-bottom: 10px;
 	}
@@ -218,7 +221,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	margin-left: 35%;
 }
 
-@media(max-width:1000px){
+@media(max-width:920px){
 	.logo{
 		margin-left: 0;
 		width: 100%;
@@ -263,18 +266,26 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	.formInfoToFind>div{
 		width: 100%;
 	}
+	.formInfoToSave>.button-primary{
+		 min-width: calc(99% - 28px);
+
+	}
 	
 }
 
 
 .red{
-
+	text-align: center;
 	font-family: oblique;
 	letter-spacing: 2px!important;
+	background-color: rgba(0, 0, 0, .2)!important;
+	text-transform: uppercase;
+
 }
 
-
-
-
-
-
+.empty{
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-family: cursive
+}

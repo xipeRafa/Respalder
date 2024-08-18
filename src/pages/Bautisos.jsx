@@ -14,6 +14,8 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
         const handlerObjectsState =({target})=>{
+                setEmptyName(true)
+                setEmptyDate(true)
                 const{ name, value } = target
                 setObjectState({...objectState, [name]:value.replace(/\b[a-z]/g,c=>c.toUpperCase())})
         }
@@ -24,24 +26,31 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
         const handlerGetFile =(event)=>{
+                setEmptyFile(true)
                 setFileState(event.target.files[0])   
         }
+
+
+
+        const[emptyName, setEmptyName]=useState(true)
+        const[emptyDate, setEmptyDate]=useState(true)
+        const[emptyFile, setEmptyFile]=useState(true)
 
 
         const submit=()=>{
 
             if(nombre.length <= 0){
-                    alert('El Nombre esta Vacio')
+                    setEmptyName('El Nombre esta Vacio')
                     return
             }
 
             if(fecha.length <= 0){
-                    alert('La Fecha esta Vacia')
+                    setEmptyDate('La Fecha esta Vacia')
                     return
             }
 
             if(fileState === ''){
-                    alert('No Hay Archivo Seleccionado')
+                    setEmptyFile('No Hay Archivo Seleccionado')
                     return
             }
 
@@ -132,13 +141,16 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
                                     <p>Respaldar Acta de {finderCollection}</p> 
 
+                                    <div className='empty'>{emptyName}</div>
                                     <input type="text" name='nombre' placeholder='Nombre...' value={nombre} onChange={(e)=>handlerObjectsState(e)} />
 
+                                    <div className='empty'>{emptyDate}</div>
                                     <input type="date" name='fecha' value={fecha} onChange={(e)=>handlerObjectsState(e)} />
 
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
+                                    <div className='empty'>{emptyFile}</div>
                                     <input type="file"  accept=".pdf" onChange={(e)=>handlerGetFile(e)}  />
 
                                     <button className='button-primary' onClick={submit}>

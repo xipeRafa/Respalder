@@ -52,20 +52,12 @@
 
 }
 
-/*.loginContainer>*>*:first-child{
-	border-bottom: 1px solid gray;
-}
-*/
+
 .loginContainer>*>*>*{
 	width: 100%;
 /*	border: 1px solid gray;*/
 	text-align: center;
 	color: #fff;
-}
-
-.loginContainer>*>*>*>*{
-/*	border: 1px solid yellow;*/
-/*	padding: 10px 0;*/
 }
 
 .borderB{
@@ -108,13 +100,6 @@
 	margin-top: 14px;
 }
 
-/*.inputBG> div{
-	border-bottom: 1px solid #30e1df;
-}*/
-
-
-
-
 .colorRed{
 	color: red;
 }
@@ -145,12 +130,10 @@
 	.loginContainer>*:first-child{
 		width: 100%;
 		height:100px;
-		/*background-image: ;*/
-		background-image: url('../pages/123.jpeg');
-/*		 background-size: 'contain';*/
-			background-size: 320px 100px;
-          background-repeat: 'no-repeat';
-          background-position: 'center';
+		background-image: url('../pages/img/123.jpeg');
+		background-size: 320px 100px;
+        background-repeat: 'no-repeat';
+        background-position: 'center';
 	}
 	.loginContainer>*:nth-child(2){
 		width: 100%;
