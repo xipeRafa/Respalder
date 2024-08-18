@@ -12,7 +12,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
         const { nombre, fecha } = objectState
 
-console.log(fecha.length)
+
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
                 setObjectState({...objectState, [name]:value.replace(/\b[a-z]/g,c=>c.toUpperCase())})
