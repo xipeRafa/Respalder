@@ -52,7 +52,8 @@ export default function Navbar() {
 
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
-        <a hreg='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>
+        {/*<a href='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>*/}
+        <a href='#' className='red'>{new Date().toLocaleString().slice(0,9)}</a>
      
     </div>   </>}
 

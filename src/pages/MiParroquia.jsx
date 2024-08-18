@@ -98,23 +98,19 @@ export default function MiParroquia({saveCat}) {
                 return
         }
 
-        login(authApp, email, password);
 
+        login(authApp, email, password);
 
     }
 
 
+  
+
+
+
+
+
     const[stateButtons, setStateButtons]=useState(true)
-
-
-
-
-
-
-
-
-
-
 
 
     return (

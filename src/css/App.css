@@ -85,18 +85,8 @@ label{
 		margin-bottom: 20px;
 	}
 	.formInfoToFind>div{
-		width: 100%;
-
 		padding: 2rem;
 	}
-/*	.formInfoToFind>div:first-child{
-		margin-bottom: 1em;
-	}*/
-	.formInfoToFind>div>input{
-		width: 100%;
-	}
-	
-
 	
 	.formInfoToSave>p{
 		font-weight: 500;
@@ -162,33 +152,6 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	}
 }
 
-.datePicker {
-	width: 100%;
-
-	padding: 0;
-}
-.react-datepicker-ignore-onclickoutside>*{
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-.react-datepicker-wrapper{
-			width: 94%;
-			margin-right: 1em;
-
-}
-/*.react-datepicker__input-container{
-	width: 100%;
-		background-color: blue;
-	margin-right: 1em;
-
-}
-.react-datepicker__input-container>*{
-	width: 100%;
-		background-color: blue;
-	margin-right: 1em;
-
-}*/
 
 .w-100{
 	width: 100%;
@@ -238,10 +201,10 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	font-family: cursive;
 	user-select: none;
 }
+
 .doc{
 	display: block;
 }
-
 
 .lupita{
 	padding: 0;
@@ -279,11 +242,11 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 
 @media(max-width:680px){
+
 	.logo{
 		margin-left: 0;
 		width: 100%;
 		padding: 0;
-
 	}
 
 	.btn-buscar{
@@ -292,12 +255,22 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 		margin-top: 28px;
 		margin-bottom: 10px;
 	}
+
+	.formInfoToFind>div>input{
+		width: 100%;
+	}
+
+	.formInfoToFind>div{
+		width: 100%;
+	}
 	
 }
 
 
 .red{
-	color: red!important;
+
+	font-family: oblique;
+	letter-spacing: 2px!important;
 }
 
 

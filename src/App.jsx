@@ -149,7 +149,7 @@ export default function App() {
    
 
         {
-            location.pathname == '/Respalder/' && localStorage.getItem('userEmailLS') !== null   
+            location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   
                 ? ''
                 : <h3 className={localStorage.getItem('userEmailLS') !== null 
                         ? 'registroParroquial-h3' 
@@ -159,7 +159,7 @@ export default function App() {
       
         <Routes>
 
-            <Route path="/Respalder/" element={<MiParroquia saveCat={saveCat}/>}  />
+            <Route path="/Respalder" element={<MiParroquia saveCat={saveCat}/>}  />
 
             <Route path="*"  element={ 
 
