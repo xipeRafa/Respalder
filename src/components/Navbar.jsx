@@ -61,7 +61,7 @@ export default function Navbar() {
 
     <div className={isActive ? "menu3 " : "menu3 display"} onClick={InWidth}>
          
-        <NavLink to="/Respalder" className='no-bg'>Mi Parroquia</NavLink>
+        <NavLink to="/Respalder/" className='no-bg'>Mi Parroquia</NavLink>
 
         <NavLink to="/Respalder/bautismos">Bautismos</NavLink>
         <NavLink to="/Respalder/comuniones"> Comuniones</NavLink>

@@ -150,7 +150,7 @@ console.log(arrParroquiaState)
    
 
             {
-                location.pathname == '/Respalder' && localStorage.getItem('userEmailLS') !== null   
+                location.pathname == '/Respalder/' && localStorage.getItem('userEmailLS') !== null   
                     ? ''
                     : <h3 className={localStorage.getItem('userEmailLS') !== null 
                         ? 'registroParroquial-h3' 
@@ -165,7 +165,7 @@ console.log(arrParroquiaState)
 
                 <Route path="*"  element={ 
 
-                    location.pathname !== '/Respalder' && localStorage.getItem('userEmailLS') !== null &&
+                    location.pathname !== '/Respalder/' && localStorage.getItem('userEmailLS') !== null &&
                         <Bautisos finderCollection={finderCollection} finderFireBase={finderFireBase} 
                             postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}
                         />
