@@ -64,7 +64,7 @@ export default function App() {
     const [arrParroquiaState, setArrParroquiaState] = useState([])
     const [getArr, setGetArr] = useState(false)
 
-
+console.log(arrParroquiaState)
 
 
     useEffect(() => {
