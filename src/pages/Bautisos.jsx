@@ -12,7 +12,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
         const { nombre, fecha } = objectState
 
-
+console.log(fecha.length)
         const handlerObjectsState =({target})=>{
                 const{ name, value } = target
                 setObjectState({...objectState, [name]:value.replace(/\b[a-z]/g,c=>c.toUpperCase())})
@@ -35,16 +35,25 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                     return
             }
 
-            if(confirm(`Quiere Guardar este Documento?`)) {
+            if(fecha.length <= 0){
+                    alert('La Fecha esta Vacia')
+                    return
+            }
+
+            if(fileState === ''){
+                    alert('No Hay Archivo Seleccionado')
+                    return
+            }
+
+            if(confirm(`Quiere Guardar este Documento de ${finderCollection}?`)) {
+                    objectState.email = localStorage.userEmailLS
+                    objectState.nombre = nombre.trim()  
+                    postFile(fileState, objectState)
                     setTimeout(()=>{
                             alert('Documento Guardado')
                     },2000)
             }
             
-            objectState.email = localStorage.userEmailLS
-            objectState.nombre = nombre.trim()  
-            postFile(fileState, objectState)
-
             setObjectState({nombre:'', fecha:''})
 
         }
