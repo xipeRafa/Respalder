@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <NavLink to="/Respalder/bautismos">Bautismos</NavLink>
         <NavLink to="/Respalder/comuniones"> Comuniones</NavLink>
-        <NavLink to="/Respalder/confirmaciones"> Confirmaciones </NavLink>
+        <NavLink to="/Respalder/confirmaciones" className='ls'> Confirmaciones </NavLink>
 
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>

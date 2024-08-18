@@ -198,10 +198,11 @@
     transition: .4s;
 }
 
-.navBar a, .navBar2 a, .navBar3 a   {
+.navBar a, .navBar2 a, .navBar3 a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     margin: 10px;
+    margin-right: 12px;
     font-size: 16px;
     letter-spacing: .6px;
     user-select: none;
@@ -242,3 +243,9 @@
      background-color: rgba(0, 0, 0, .2)!important;
 }
 
+.no-bg:focus{
+    background-color: rgba(0, 0, 0, .2)!important;
+}
+.ls{
+    letter-spacing: 0!important;
+}
