@@ -13,34 +13,35 @@ const useLogin = ( ) => {
 
     const register = async (authApp, email, password) => {
 
-      try {
+        try {
 
-          await createUserWithEmailAndPassword(authApp, email, password)
+            await createUserWithEmailAndPassword(authApp, email, password)
           
-          login(authApp, email, password);
+            login(authApp, email, password);
 
-          localStorage.setItem('userEmailLS', email)
+            localStorage.setItem('userEmailLS', email)
 
-      } catch (error) {
+        } catch (error) {
 
-          console.error("code.error", error.code)
+            console.error("code.error", error.code)
+            console.log(error.message);
 
-          const errorObj = {
-              "auth/email-already-in-use" : () => alert("El Correo ya esta en Uso."),
-              "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
-              "auth/weak-password": () => alert("La Contraseña es muy débil."),
-              "auth/invalid-email": () => alert("El Correo No es Valido."),
-          };
+            const errorObj = {
+                "auth/email-already-in-use" : () => alert("El Correo ya esta en Uso."),
+                "auth/operation-not-allowed": () => alert("Operacion No Permitida."),
+                "auth/weak-password": () => alert("La Contraseña es muy débil."),
+                "auth/invalid-email": () => alert("El Correo No es Valido."),
+            };
 
-          const mySwithFunction = (errorCode) => {
-              errorObj[errorCode]()
-          }
+            const mySwithFunction = (errorCode) => {
+                errorObj[errorCode]()
+            }
 
-          mySwithFunction(error.code)
+            mySwithFunction(error.code)
 
-          location.reload()
-      }
+            location.reload()
 
+        }
 
     }
 
@@ -92,6 +93,7 @@ const useLogin = ( ) => {
         signOut(authApp)
 
         localStorage.removeItem('userEmailLS')
+        localStorage.removeItem('userName')
 
         location.reload()
 

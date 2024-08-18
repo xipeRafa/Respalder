@@ -52,7 +52,7 @@ export default function Navbar() {
 
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
-        <NavLink to="/Respalder/usuarios"> Usuarios</NavLink>
+        <a hreg='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>
      
     </div>   </>}
 
@@ -63,5 +63,3 @@ export default function Navbar() {
 
 
 
-
-/*  */

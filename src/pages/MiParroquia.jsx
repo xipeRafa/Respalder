@@ -1,7 +1,7 @@
 
 import { useEffect, useState} from 'react';
 
-import imgA from './abc.jpeg'
+import imgA from './img/abc.jpeg'
 
 import style from '../css/login.module.css'
 
@@ -22,6 +22,7 @@ export default function MiParroquia({saveCat}) {
 
     const [register, login, logout] = useLogin()
 
+
     const [error, setError] = useState('');
 
 
@@ -32,6 +33,7 @@ export default function MiParroquia({saveCat}) {
 
     const {name, email, password, password2} = objectState
 
+
     const handlerObjectsState=(e)=>{
             setError('')
             const {name, value}=e.target
@@ -39,7 +41,6 @@ export default function MiParroquia({saveCat}) {
     }
 
     
-console.log(name)
 
 
 

@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 
-export default function Bautisos({postFile, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
+export default function Bautisos({finderCollection, postFile, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
 
 
         const[objectState, setObjectState]=useState({
-                nombreBautismo:'',
-                fechaBautismo:''
+                nombre:'',
+                fecha:''
         })
-console.log(objectState.nombreBautismo)
 
-        const { nombreBautismo, fechaBautismo } = objectState
+
+        const { nombre, fecha } = objectState
 
 
         const handlerObjectsState =({target})=>{
@@ -30,7 +30,7 @@ console.log(objectState.nombreBautismo)
 
         const submit=()=>{
 
-            if(nombreBautismo.length <= 0){
+            if(nombre.length <= 0){
                     alert('El Nombre esta Vacio')
                     return
             }
@@ -42,10 +42,10 @@ console.log(objectState.nombreBautismo)
             }
             
             objectState.email = localStorage.userEmailLS
-            objectState.nombreBautismo = nombreBautismo.trim()  
+            objectState.nombre = nombre.trim()  
             postFile(fileState, objectState)
 
-            setObjectState({nombreBautismo:'', fechaBautismo:''})
+            setObjectState({nombre:'', fecha:''})
 
         }
 
@@ -106,10 +106,11 @@ console.log(objectState.nombreBautismo)
  
     return (
             <>
+            {localStorage.getItem('userEmailLS') !== null &&<>
 
                 <div className='ButtonsNuevoBuscar'>
-                        <button onClick={()=>setStateButtons(true)}>  Nuevo Bautismo </button>
-                        <button onClick={()=>setStateButtons(false)}> Buscar {/*<span className='lupita'>⌕</span>*/} </button>
+                        <button onClick={()=>setStateButtons(true)}>  Nuevo {finderCollection} </button>
+                        <button onClick={()=>setStateButtons(false)}> Buscar  {/*<span className='lupita'>⌕</span>*/} </button>
                 </div> 
 
 
@@ -120,16 +121,16 @@ console.log(objectState.nombreBautismo)
                                    
                                 <div className='formInfoToSave'>
 
-                                    <p>Respaldar FE de Bautismo</p> 
+                                    <p>Respaldar Acta de {finderCollection}</p> 
 
-                                    <input type="text" name='nombreBautismo' placeholder='Nombre...' value={nombreBautismo} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="text" name='nombre' placeholder='Nombre...' value={nombre} onChange={(e)=>handlerObjectsState(e)} />
 
-                                    <input type="date" name='fechaBautismo' value={fechaBautismo} placeholder='Fecha de Bautismo' onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="date" name='fecha' value={fecha} onChange={(e)=>handlerObjectsState(e)} />
 
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
-                                    <input type="file"  accept=".pdf" name="fileBautismo" onChange={(e)=>handlerGetFile(e)}  />
+                                    <input type="file"  accept=".pdf" onChange={(e)=>handlerGetFile(e)}  />
 
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
@@ -144,8 +145,8 @@ console.log(objectState.nombreBautismo)
                             <div className='formInfoToFind'>
 
                                 <div>
-                                    <label htmlFor="avatar1">Buscar Bautismo con Nombre:</label>
-                                    <input type="search"  id='avatar1' name='nombreBautismo' className='w-80' value={nameFinder}
+                                    <label htmlFor="avatar1">Buscar {finderCollection} con Nombre:</label>
+                                    <input type="search"  id='avatar1' className='w-80' value={nameFinder}
                                             onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
                                             <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
@@ -174,8 +175,8 @@ console.log(objectState.nombreBautismo)
                                             {arrParroquiaState.map((el, i)=>(
                                                 <div key={i}>
                                                     <hr />
-                                                    <p><span>Nombre:</span> {el.nombreBautismo}</p>
-                                                    <p><span>Fecha:</span> {el.fechaBautismo}</p>
+                                                    <p><span>Nombre:</span> {el.nombre}</p>
+                                                    <p><span>Fecha:</span> {el.fecha}</p>
                                                     <p><span>Documento:</span> {el.fileName}</p>
                                                     <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
                                                     <hr />
@@ -189,7 +190,7 @@ console.log(objectState.nombreBautismo)
                             </div>
 
                 }
-
+                </>}
             </>
     );
 }
