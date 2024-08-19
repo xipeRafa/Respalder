@@ -780,11 +780,18 @@ img{width: 100%;}
 
   input::file-selector-button {
     height: 25px;
-    font-weight: 100;
-    border: thin solid grey;
+    width: 0;
+    padding: 0;
+    font-weight: 0;
+    border: thin solid transparent;
     border-radius: 3px;
-    margin-right: 20px;
+/*    margin-right: 20px;*/
     background-color: #fff;
+
+  }
+
+  .fileImg {
+    padding: 20px;
   }
 
   /* Lists

@@ -30,102 +30,99 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
-const [base64State, setBase64State]=useState()
+        // const [base64State, setBase64State]=useState()
 
 
-const idb =
-    window.indexedDB ||
-    window.mozIndexedDB ||
-    window.webkitIndexedDB ||
-    window.msIndexedDB ||
-    window.shimIndexedDB;
+        // const idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
-const insertDataInIndexedDb = () => {
 
-    if (!idb) {
-        console.log("This browser doesn't support IndexedDB");
-        return;
-    }
+        // const insertDataInIndexedDb = () => {
 
-    const request = idb.open(finderCollection);
+        //         if (!idb) {
+        //                 console.log("This browser doesn't support IndexedDB");
+        //                 return;
+        //         }
 
-    request.onerror = function (event) {
-        console.error("An error occurred with IndexedDB");
-        console.error(event);
-    };
+        //         const request = idb.open(finderCollection);
 
-    request.onupgradeneeded = function (event) { //cuando se quiere abrir una base de datos que no existe
-        //console.log('onupgradeneeded:', event);
-        const db = request.result;
+        //         request.onerror = function (event) {
+        //                 console.error("An error occurred with IndexedDB");
+        //                 console.error(event);
+        //         };
 
-        if (!db.objectStoreNames.contains("userData")) {
-            const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+        //         request.onupgradeneeded = function (event) { //cuando se quiere abrir una base de datos que no existe
+        //                 const db = request.result;
 
-            objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
-        }
-    };
+        //                 if (!db.objectStoreNames.contains("userData")) {
+        //                         const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+        //                         objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+        //                 }
+        //         };
 
-    request.onsuccess = function () {
-        console.log("Database opened successfully");
+        //         request.onsuccess = function () {
 
-        const db = request.result;
+        //                 const db = request.result;
 
-        let tx = db.transaction("userData", "readwrite");
-        let userData = tx.objectStore("userData")
+        //                 let tx = db.transaction("userData", "readwrite");
+        //                 let userData = tx.objectStore("userData")
 
-        if(base64State !== undefined){
-                userData.add({
-                    id:allUsers.length+1,
-                    nombre:nombre,
-                    fecha:fecha,
-                    img64: base64State
-                })
-                setBase64State(undefined)
-        }
+        //                 if(base64State !== undefined){
+        //                         userData.add({
+        //                                 id:allUsers.length+1,
+        //                                 nombre:nombre,
+        //                                 fecha:fecha,
+        //                                 img64: base64State
+        //                         })
+        //                         setBase64State(undefined)
+        //                 }
         
-        return tx.complete;
-    };
+        //                 return tx.complete;
+        //         }           
 
-};
+        // };
 
 
 
    
-     const [allUsers, setAllUsers] = useState([]);
+        // const [allUsers, setAllUsers] = useState([])
 
-     console.log('allUsers:', allUsers.length)
+        // const getAllData = () => {
 
-    const getAllData = () => {
+        //         const dbPromise = idb.open(finderCollection)
 
-        const dbPromise = idb.open(finderCollection);
+        //         dbPromise.onsuccess = () => {
+        //                 const db = dbPromise.result
 
-        dbPromise.onsuccess = () => {
-            const db = dbPromise.result;
+        //                 let tx = db.transaction("userData", "readonly")
+        //                 let userData = tx.objectStore("userData")
+        //                 const users = userData.getAll()
 
-            let tx = db.transaction("userData", "readonly");
-            let userData = tx.objectStore("userData");
-            const users = userData.getAll();
+        //                 users.onsuccess = (query) => {
+        //                         setAllUsers(query.srcElement.result);
+        //                 }
 
-            users.onsuccess = (query) => {
-                setAllUsers(query.srcElement.result);
-            };
+        //                 tx.oncomplete = function () {
+        //                         db.close();
+        //                 }
+        //         }
 
-            tx.oncomplete = function () {
-                db.close();
-            };
-        };
-
-    };
+        // }
 
 
 
-    useEffect(() => {
-         getAllData()
-        insertDataInIndexedDb()
-        // getAgeWiseData();
-    }, [base64State, finderCollection]);
+        useEffect(() => {
+                // getAllData()
+                setObjectState({nombre:'', fecha:''})
+                setFileState('')
+        }, [finderCollection]);
 
  
+
+        // useEffect(() => {
+        //         getAllData()
+        //         insertDataInIndexedDb()
+        // }, [base64State]);
+
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-resizeFile-=-=-=-=-=-=-=-=-=-=-=-=-----------=-=-=-=-=-=-===============//
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-resizeFile-=-=-=-=-=-=-=-=-=-=-=-=-----------=-=-=-=-=-=-===============//
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-resizeFile-=-=-=-=-=-=-=-=-=-=-=-=-----------=-=-=-=-=-=-===============//
@@ -145,8 +142,8 @@ const insertDataInIndexedDb = () => {
                 (uri) => {
                     //console.log('uri:', uri);
                     resolve(uri);
-                    setBase64State(uri)
-                    insertDataInIndexedDb()
+                    // setBase64State(uri)
+                    // insertDataInIndexedDb()
                 },"base64"
             )
 
@@ -205,12 +202,12 @@ const insertDataInIndexedDb = () => {
 
 
 
-            try {
-                let isFileSaverSupported = !!new Blob;
-            } catch (error) {
-                alert(error)
-                console.log(error)
-            }
+            // try {
+            //     let isFileSaverSupported = !!new Blob;
+            // } catch (error) {
+            //     alert(error)
+            //     console.log(error)
+            // }
 
           
 
@@ -262,10 +259,11 @@ const insertDataInIndexedDb = () => {
                     postFile(fileState, objectState)
                     setTimeout(()=>{
                             alert('Documento Guardado')
-                    },2000)
+                    },1000)
             }
             
             setObjectState({nombre:'', fecha:''})
+            setFileState('')
 
         }
 
@@ -353,7 +351,7 @@ const insertDataInIndexedDb = () => {
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
                                     <div className='empty'>{emptyFile}</div>
-                                    <input type="file" onChange={(e)=>onResize(e)}  />
+                                    <input className='fileImg' type="file" onChange={(e)=>onResize(e)}  />
 
                                      {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
