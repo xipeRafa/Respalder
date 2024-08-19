@@ -151,7 +151,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
                                     <div className='empty'>{emptyFile}</div>
-                                    <input type="file"  {/*accept=".pdf"*/} onChange={(e)=>handlerGetFile(e)}  />
+                                    <input type="file" onChange={(e)=>handlerGetFile(e)}  />
 
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
