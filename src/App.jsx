@@ -93,7 +93,7 @@ console.log(arrParroquiaState)
 
 
     const postFile = (selectedFile, postBody) => {
-
+console.log(selectedFile)
 
         const postCollection = collection(firestoreDB, fireBaseCollection || 'bautismos');
 

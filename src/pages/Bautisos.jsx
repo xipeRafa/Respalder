@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Resizer from "react-image-file-resizer";
 
 
 export default function Bautisos({finderCollection, postFile, arrParroquiaState, setGetArr, getArr, finderFireBase}) {
@@ -22,13 +23,89 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
-        const[fileState, setFileState]=useState('')
 
 
-        const handlerGetFile =(event)=>{
-                setEmptyFile(true)
-                setFileState(event.target.files[0])   
-        }
+
+
+    const resizeFile = (file) =>{
+
+        return new Promise((resolve) => {
+
+            Resizer.imageFileResizer(
+                file,
+                612,
+                791,
+                "JPEG",
+                80,
+                0,
+                (uri) => {
+                    //console.log('uri:', uri);
+                    resolve(uri);
+                },"base64"
+            )
+
+        })
+        .catch((error)=> {
+            console.log(error)
+            console.log('SE MAMARON!!')
+            alert('El Archivo Cargado No es una Imagen')
+        })
+    }    
+    
+
+
+
+    const[fileState, setFileState]=useState('')
+
+console.log(fileState)
+
+
+    const onResize = async (event) => {
+        setEmptyFile(true)
+        const file = event.target.files[0];
+
+        const image = await resizeFile(file);
+
+
+        fetch(image)
+            .then((res) => res.blob())
+            .then((blob) => {
+                const file = new File([blob], event.target.files[0].name.split('.')[0] + ".jpeg", {
+                    type: "image/jpeg",
+                });
+                //setImg(file);
+                setFileState(file)
+
+
+            })
+            .catch((error)=>{
+                console.log(error)
+                console.log('SE MAMARON onResize!!')
+            })
+
+            // setSpinnerState(true)
+            // setTimeout(()=>{
+            //     setSpinnerState(false)
+            // },4000)
+    };
+
+
+
+
+
+
+
+
+       
+
+
+        // const handlerGetFile =(event)=>{
+        //         setEmptyFile(true)
+        //         setFileState(event.target.files[0])   
+        // }
+
+
+
 
 
 
@@ -151,8 +228,9 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
                                     <div className='empty'>{emptyFile}</div>
-                                    <input type="file" onChange={(e)=>handlerGetFile(e)}  />
+                                    <input type="file" onChange={(e)=>onResize(e)}  />
 
+                                     {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
                                     </button>
@@ -168,7 +246,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                 <div>
                                     <label htmlFor="avatar1">Buscar {finderCollection} con Nombre:</label>
                                     <input type="search"  id='avatar1' className='w-80' value={nameFinder}
-                                            onChange={(e)=>handlerNameFinder(e)} placeholder='Nombre Completo...'/>
+                                            onChange={(event)=>handlerNameFinder(event)} placeholder='Nombre Completo...'/>
                                             <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
 
