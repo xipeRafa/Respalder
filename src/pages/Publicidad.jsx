@@ -225,8 +225,8 @@ export default function Publicidad() {
 
             const descargar=()=>{
 
-                    const nowMonthYear =()=> { // '8/2024'
-                            return new Date().toLocaleString().slice(3,9)
+                    const nowNumberDate =()=> { // '16/8/2024'
+                            return new Date().toLocaleString().slice(0,9)
                     }
 
 
@@ -237,7 +237,7 @@ export default function Publicidad() {
 
                     const link = document.createElement("a");
                     link.href = jsonString;
-                    link.download = `${nowMonthYear()}-Respaldo.txt`
+                    link.download = `${nowNumberDate()}-Respaldo.txt`
                     link.click();    
             }
      
