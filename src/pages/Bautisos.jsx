@@ -30,98 +30,67 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
-        // const [base64State, setBase64State]=useState()
+        const [base64State, setBase64State]=useState(undefined)
 
 
-        // const idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+        const idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
 
-        // const insertDataInIndexedDb = () => {
+        const insertDataInIndexedDb = () => {
 
-        //         if (!idb) {
-        //                 console.log("This browser doesn't support IndexedDB");
-        //                 return;
-        //         }
+                if (!idb) {
+                        console.log("This browser doesn't support IndexedDB");
+                        return;
+                }
 
-        //         const request = idb.open(finderCollection);
+                const request = idb.open(finderCollection);
 
-        //         request.onerror = function (event) {
-        //                 console.error("An error occurred with IndexedDB");
-        //                 console.error(event);
-        //         };
+                request.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
 
-        //         request.onupgradeneeded = function (event) { //cuando se quiere abrir una base de datos que no existe
-        //                 const db = request.result;
+                request.onupgradeneeded = function (event) { //cuando se quiere abrir una base de datos que no existe
+                        const db = request.result;
 
-        //                 if (!db.objectStoreNames.contains("userData")) {
-        //                         const objectStore = db.createObjectStore("userData", {keyPath: "id"});
-        //                         objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
-        //                 }
-        //         };
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                };
 
-        //         request.onsuccess = function () {
+                request.onsuccess = function () {
 
-        //                 const db = request.result;
+                        const db = request.result;
 
-        //                 let tx = db.transaction("userData", "readwrite");
-        //                 let userData = tx.objectStore("userData")
+                        let tx = db.transaction("userData", "readwrite");
+                        let userData = tx.objectStore("userData")
 
-        //                 if(base64State !== undefined){
-        //                         userData.add({
-        //                                 id:allUsers.length+1,
-        //                                 nombre:nombre,
-        //                                 fecha:fecha,
-        //                                 img64: base64State
-        //                         })
-        //                         setBase64State(undefined)
-        //                 }
+                        if(base64State !== undefined){
+                                userData.add({
+                                        id:Date.now(),
+                                        nombre:nombre,
+                                        fecha:fecha,
+                                        img64: base64State
+                                })
+                                localStorage.setItem('64', base64State)
+                                setBase64State(undefined)
+                        }
         
-        //                 return tx.complete;
-        //         }           
+                        return tx.complete;
+                }           
 
-        // };
+        };
 
-
-
-   
-        // const [allUsers, setAllUsers] = useState([])
-
-        // const getAllData = () => {
-
-        //         const dbPromise = idb.open(finderCollection)
-
-        //         dbPromise.onsuccess = () => {
-        //                 const db = dbPromise.result
-
-        //                 let tx = db.transaction("userData", "readonly")
-        //                 let userData = tx.objectStore("userData")
-        //                 const users = userData.getAll()
-
-        //                 users.onsuccess = (query) => {
-        //                         setAllUsers(query.srcElement.result);
-        //                 }
-
-        //                 tx.oncomplete = function () {
-        //                         db.close();
-        //                 }
-        //         }
-
-        // }
 
 
 
         useEffect(() => {
-                // getAllData()
                 setObjectState({nombre:'', fecha:''})
                 setFileState('')
         }, [finderCollection]);
 
  
-
-        // useEffect(() => {
-        //         getAllData()
-        //         insertDataInIndexedDb()
-        // }, [base64State]);
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-resizeFile-=-=-=-=-=-=-=-=-=-=-=-=-----------=-=-=-=-=-=-===============//
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-resizeFile-=-=-=-=-=-=-=-=-=-=-=-=-----------=-=-=-=-=-=-===============//
@@ -142,8 +111,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                 (uri) => {
                     //console.log('uri:', uri);
                     resolve(uri);
-                    // setBase64State(uri)
-                    // insertDataInIndexedDb()
+                    setBase64State(uri)
                 },"base64"
             )
 
@@ -158,9 +126,9 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
-    const[fileState, setFileState]=useState('')
+    const[fileState, setFileState]=useState()
 
-
+console.log(fileState)
 
           
 
@@ -202,12 +170,12 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
-            // try {
-            //     let isFileSaverSupported = !!new Blob;
-            // } catch (error) {
-            //     alert(error)
-            //     console.log(error)
-            // }
+            try {
+                let isFileSaverSupported = !!new Blob;
+            } catch (error) {
+                alert(error)
+                console.log(error)
+            }
 
           
 
@@ -221,10 +189,10 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
        
 
 
-        // const handlerGetFile =(event)=>{
-        //         setEmptyFile(true)
-        //         setFileState(event.target.files[0])   
-        // }
+        const handlerGetFile =(event)=>{
+                setEmptyFile(true)
+                setFileState(event.target.files[0])   
+        }
 
 
 
@@ -253,13 +221,15 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                     return
             }
 
+            insertDataInIndexedDb()
+
             if(confirm(`Quiere Guardar este Documento de ${finderCollection}?`)) {
                     objectState.email = localStorage.userEmailLS
                     objectState.nombre = nombre.trim()  
                     postFile(fileState, objectState)
                     setTimeout(()=>{
                             alert('Documento Guardado')
-                    },1000)
+                    },2000)
             }
             
             setObjectState({nombre:'', fecha:''})
@@ -314,6 +284,24 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
+        const nowMonthYear =()=> { // '8/2024'
+                return new Date().toLocaleString().slice(3,9)
+        }
+
+        const exportData = () => {
+            const jsonString = `data:text/txt;chatset=utf-8,${encodeURIComponent( JSON.stringify(allUsers) )}`;
+                const link = document.createElement("a");
+                link.href = jsonString;
+                link.download = `${nowMonthYear()}-${finderCollection}-Respaldo.txt`
+
+                link.click();
+        };
+
+
+
+
+            
+
 
 
         
@@ -356,6 +344,12 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                      {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
+                                    </button>
+
+                                    
+
+                                     <button  onClick={exportData}>
+                                        Guardar Respaldo Mensual
                                     </button>
 
                                    
