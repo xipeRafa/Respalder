@@ -7,30 +7,30 @@ import {useState} from 'react';
 
 export default function Publicidad() {
 
-	const nowDate =()=> {   // 'Viernes, 16 de Agosto de 2024'
+	   const nowDate =()=> {   // 'Viernes, 16 de Agosto de 2024'
 
-        const options = {
-            weekday: "long", // narrow, short
-            year: "numeric", // 2-digit
-            month: "long", // numeric, 2-digit, narrow, long
-            day: "numeric", // 2-digit
-            hour:'numeric',
-            minute:'numeric',
-            second:'numeric',
+            const options = {
+                weekday: "long", // narrow, short
+                year: "numeric", // 2-digit
+                month: "long", // numeric, 2-digit, narrow, long
+                day: "numeric", // 2-digit
+                hour:'numeric',
+                minute:'numeric',
+                second:'numeric',
+            }
+
+            return new Date().toLocaleString('es-ES', options)
+      
         }
 
-        return new Date().toLocaleString('es-ES', options)
-      
-    }
 
 
 
-
-        const [allUsers1, setAllUsers1] = useState([])
-        const [allUsers2, setAllUsers2] = useState([])
-        const [allUsers3, setAllUsers3] = useState([])
-        const [allUsers4, setAllUsers4] = useState([])
-        const [allUsers5, setAllUsers5] = useState([])
+        const [allUsers1, setAllUsers1] = useState()
+        const [allUsers2, setAllUsers2] = useState()
+        const [allUsers3, setAllUsers3] = useState()
+        const [allUsers4, setAllUsers4] = useState()
+        const [allUsers5, setAllUsers5] = useState()
 
 
 
@@ -43,6 +43,20 @@ export default function Publicidad() {
 
                 const dbPromise1 = idb.open('Bautismo')
 
+                dbPromise1.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
+
+                dbPromise1.onupgradeneeded = function (event) {
+                       const db = dbPromise1.result;
+
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                }
+
                 dbPromise1.onsuccess = () => {
                         const db1 = dbPromise1.result
 
@@ -51,6 +65,9 @@ export default function Publicidad() {
                         const users1 = userData1.getAll()
 
                         users1.onsuccess = (query) => {
+                            if(query.srcElement.result.length === 0){
+                                return
+                            }
                             setAllUsers1(query.srcElement.result);
                         }
 
@@ -59,7 +76,21 @@ export default function Publicidad() {
                         }
                 }
 
-                 const dbPromise2 = idb.open('Comunion')
+                const dbPromise2 = idb.open('Comunion')
+
+                dbPromise2.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
+
+                dbPromise2.onupgradeneeded = function (event) {
+                       const db = dbPromise2.result;
+
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                }
 
                 dbPromise2.onsuccess = () => {
                         const db2 = dbPromise2.result
@@ -69,6 +100,9 @@ export default function Publicidad() {
                         const users2 = userData2.getAll()
 
                         users2.onsuccess = (query) => {
+                            if(query.srcElement.result.length === 0){
+                                return
+                            }
                             setAllUsers2(query.srcElement.result);
                         }
 
@@ -77,7 +111,21 @@ export default function Publicidad() {
                         }
                 }
 
-                 const dbPromise3 = idb.open('Confirmacion')
+                const dbPromise3 = idb.open('Confirmacion')
+
+                dbPromise3.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
+
+                dbPromise3.onupgradeneeded = function (event) {
+                       const db = dbPromise3.result;
+
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                }
 
                 dbPromise3.onsuccess = () => {
                         const db3 = dbPromise3.result
@@ -87,6 +135,9 @@ export default function Publicidad() {
                         const users3 = userData3.getAll()
 
                         users3.onsuccess = (query) => {
+                            if(query.srcElement.result.length === 0){
+                                return
+                            }
                             setAllUsers3(query.srcElement.result);
                         }
 
@@ -95,7 +146,21 @@ export default function Publicidad() {
                         }
                 }
 
-                 const dbPromise4 = idb.open('Matrimonio')
+                const dbPromise4 = idb.open('Matrimonio')
+
+                dbPromise4.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
+
+                dbPromise4.onupgradeneeded = function (event) {
+                       const db = dbPromise4.result;
+
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                }
 
                 dbPromise4.onsuccess = () => {
                         const db4 = dbPromise4.result
@@ -105,6 +170,9 @@ export default function Publicidad() {
                         const users4 = userData4.getAll()
 
                         users4.onsuccess = (query) => {
+                            if(query.srcElement.result.length === 0){
+                                return
+                            }
                             setAllUsers4(query.srcElement.result);
                         }
 
@@ -113,7 +181,21 @@ export default function Publicidad() {
                         }
                 }
 
-                 const dbPromise5 = idb.open('Defuncion')
+                const dbPromise5 = idb.open('Defuncion')
+
+                dbPromise5.onerror = function (event) {
+                        console.error("An error occurred with IndexedDB");
+                        console.error(event);
+                };
+
+                dbPromise5.onupgradeneeded = function (event) {
+                        const db = dbPromise5.result;
+
+                        if (!db.objectStoreNames.contains("userData")) {
+                                const objectStore = db.createObjectStore("userData", {keyPath: "id"});
+                                objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
+                        }
+                }
 
                 dbPromise5.onsuccess = () => {
                         const db5 = dbPromise5.result
@@ -123,6 +205,9 @@ export default function Publicidad() {
                         const users5 = userData5.getAll()
 
                         users5.onsuccess = (query) => {
+                            if(query.srcElement.result.length === 0){
+                                return
+                            }
                             setAllUsers5(query.srcElement.result);
                         }
 
@@ -132,37 +217,52 @@ export default function Publicidad() {
                 }
 
 
-            
-
             };
+
+
+
+
 
             const descargar=()=>{
 
-            const nowMonthYear =()=> { // '8/2024'
-                return new Date().toLocaleString().slice(3,9)
+                    const nowMonthYear =()=> { // '8/2024'
+                            return new Date().toLocaleString().slice(3,9)
+                    }
+
+
+
+                    const jsonString = `data:text/txt;chatset=utf-8,${
+                            encodeURIComponent( JSON.stringify( [allUsers1, allUsers2, allUsers3, allUsers4, allUsers5].flat().filter(el=>el !== undefined) ) )
+                    }`
+
+                    const link = document.createElement("a");
+                    link.href = jsonString;
+                    link.download = `${nowMonthYear()}-Respaldo.txt`
+                    link.click();    
             }
-
-
-
-            const jsonString = `data:text/txt;chatset=utf-8,
-                ${encodeURIComponent( JSON.stringify( [allUsers1, allUsers2, allUsers3, allUsers4, allUsers5].flat() ) )}`;
-
-            const link = document.createElement("a");
-            link.href = jsonString;
-            link.download = `${nowMonthYear()}-Respaldo.txt`
-            link.click();    
-}
      
-
 
 
 	return(
 		<>
 			<p className='red'>{nowDate()}</p>
 
+            <button  onClick={()=>exportData()}> Guardar Respaldo Mensual </button>
 
-              <button  onClick={()=>exportData()}> Guardar Respaldo Mensual </button>
-              <button  className={allUsers5.length === 0 ? 'd-none' : 'ml-2'} onClick={()=>descargar()}> Descargar </button>
+            <button
+
+                className={
+                    [allUsers1, allUsers2, allUsers3, allUsers4, allUsers5].flat().some(el => el !== undefined) 
+                    ? 'ml-2'
+                    : 'd-none' 
+                } 
+
+                onClick={()=>descargar()}> Descargar </button>
 		</>
 	)
 }
+
+
+
+
+

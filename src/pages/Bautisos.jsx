@@ -39,7 +39,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
         const insertDataInIndexedDb = () => {
 
                 if (!idb) {
-                        console.log("This browser doesn't support IndexedDB");
+                        alert('Use el Navegador Google')
                         return;
                 }
 
@@ -57,6 +57,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                 const objectStore = db.createObjectStore("userData", {keyPath: "id"});
                                 objectStore.createIndex("nombreBuscar", "nombre", {unique: false,});
                         }
+                        console.log('Bautismos.jsx-onupgradeneeded', event)
                 };
 
                 request.onsuccess = function () {
