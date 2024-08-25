@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Resizer from "react-image-file-resizer";
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
 
 
 
@@ -171,12 +171,12 @@ console.log(fileState)
 
 
 
-            try {
-                let isFileSaverSupported = !!new Blob;
-            } catch (error) {
-                alert(error)
-                console.log(error)
-            }
+            // try {
+            //     let isFileSaverSupported = !!new Blob;
+            // } catch (error) {
+            //     alert(error)
+            //     console.log(error)
+            // }
 
           
 
@@ -282,30 +282,8 @@ console.log(fileState)
             const{ name, value } = target
             setNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
-
-
-
-        const nowMonthYear =()=> { // '8/2024'
-                return new Date().toLocaleString().slice(3,9)
-        }
-
-        const exportData = () => {
-            const jsonString = `data:text/txt;chatset=utf-8,${encodeURIComponent( JSON.stringify(allUsers) )}`;
-                const link = document.createElement("a");
-                link.href = jsonString;
-                link.download = `${nowMonthYear()}-${finderCollection}-Respaldo.txt`
-
-                link.click();
-        };
-
-
-
-
-            
-
-
-
         
+
 
         const[stateButtons, setStateButtons]=useState(true)
 
@@ -334,7 +312,7 @@ console.log(fileState)
                                     <input type="text" name='nombre' placeholder='Nombre...' value={nombre} onChange={(e)=>handlerObjectsState(e)} />
 
                                     <div className='empty'>{emptyDate}</div>
-                                    <input type="date" name='fecha' value={fecha} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="date" className='dateInput' name='fecha' value={fecha} onChange={(e)=>handlerObjectsState(e)} />
 
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
@@ -345,12 +323,6 @@ console.log(fileState)
                                      {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
                                         GUARDAR
-                                    </button>
-
-                                    
-
-                                     <button  onClick={exportData}>
-                                        Guardar Respaldo Mensual
                                     </button>
 
                                    

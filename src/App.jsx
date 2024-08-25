@@ -75,7 +75,7 @@ console.log(arrParroquiaState)
         )
 
         getDocs(data).then((resp) => {
-            setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }) ))
+            setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data() }) ))
         }).catch(err=>{
             console.error(err)
         })
