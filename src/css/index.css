@@ -1345,7 +1345,7 @@ template {
     padding: 8px;
     cursor: pointer;
     font-size:20px;
-    width:calc(100% - 100px);
+    width:calc(100% - 115px);
 }
 
 .dateInput::-webkit-calendar-picker-indicator:hover{
