@@ -164,7 +164,7 @@ export default function MiParroquia({saveCat}) {
 
                     <div className={style.hello}>
                         <span>{localStorage.userEmailLS.split('@')[0]}</span>
-                        <button onClick={()=>logout()}>SALIR</button>    
+                        <button onClick={()=>logout()}>SALIR ➩</button>    
                     </div>
 
                     <h1 className={style.alabado}>¡ALABADO SEA JESUCRISTO!</h1>

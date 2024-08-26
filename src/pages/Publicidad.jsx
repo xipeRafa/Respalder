@@ -257,7 +257,22 @@ export default function Publicidad() {
                     : 'd-none' 
                 } 
 
-                onClick={()=>descargar()}> Descargar </button>
+                onClick={()=>descargar()
+
+            }> 
+
+                Descargar ⬇︎
+
+            </button>
+
+            
+
+             <a className={
+                    [allUsers1, allUsers2, allUsers3, allUsers4, allUsers5].flat().some(el => el !== undefined) 
+                    ? 'linkA'
+                    : 'd-none' 
+                } href='https://xiperafa.github.io/lector/' target='_black' >ir a Lector de Respaldos ➚ </a>
+
 		</>
 	)
 }

@@ -322,7 +322,7 @@ console.log(fileState)
 
                                      {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
-                                        GUARDAR
+                                        GUARDAR ⇧
                                     </button>
 
                                    
