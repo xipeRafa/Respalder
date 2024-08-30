@@ -69,16 +69,20 @@ console.log(arrParroquiaState)
 
     useEffect(() => {
 
-        const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
+        if(finderState !== ''){
+
+            const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
                     where('email', '==', localStorage.getItem('userEmailLS')),
                      where('nombre', '==', finderState.trim())
-        )
+            )
 
-        getDocs(data).then((resp) => {
-            setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data() }) ))
-        }).catch(err=>{
-            console.error(err)
-        })
+            getDocs(data).then((resp) => {
+                setArrParroquiaState(resp.docs.map((doc) => ({ ...doc.data() }) ))
+            }).catch(err=>{
+                console.error(err)
+            })
+
+        }
 
     }, [getArr]) 
 

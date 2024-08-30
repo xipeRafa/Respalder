@@ -129,7 +129,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
     const[fileState, setFileState]=useState()
 
-console.log(fileState)
+
 
           
 
@@ -261,24 +261,28 @@ console.log(fileState)
 
             finderFireBase(nameFinder) 
             setGetArr(!getArr)  
-
-            setTimeout(()=>{
-                setEmptyState(false)
-             },300) 
             
-            if(arrParroquiaState.length>=1){
-                setEmptyState(false)
-            }else{
-                setEmptyState('Buscando...')  
-            }  
+            setEmptyState('Buscando...')  
 
         }
+
+
+        useEffect(()=>{
+            if(nameFinder !== ''){
+                setEmptyState(false)
+                console.log('hii!!!') 
+            }
+        },[arrParroquiaState])
 
 
 
 
 
         const handlerNameFinder =({target})=>{
+            if(arrParroquiaState.length === 0){
+               setEmptyState(true) 
+            }
+            
             const{ name, value } = target
             setNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
@@ -333,7 +337,12 @@ console.log(fileState)
                                 </div>    
 
 
+
+
                             : 
+
+
+
 
                             <div className='formInfoToFind'>
 
@@ -341,47 +350,42 @@ console.log(fileState)
                                     <label htmlFor="avatar1">Buscar {finderCollection} con Nombre:</label>
                                     <input type="search"  id='avatar1' className='w-80' value={nameFinder}
                                             onChange={(event)=>handlerNameFinder(event)} placeholder='Nombre Completo...'/>
-                                            <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
+                                    <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
-
-
-
 
 
                                 <p  className={emptyState ? 'd-none' : 'cerrar'} onClick={()=>setEmptyState(!emptyState)}>
                                         Cerrar Busqueda ✘ 
                                 </p>
-                                  <p  className={!emptyState ? 'd-none' : 'no-encontrado'} onClick={()=>setEmptyState(true)}>
+
+
+                                <p  className={!emptyState ? 'd-none' : 'no-encontrado'} onClick={()=>setEmptyState(true)}>
                                         {emptyState}  
                                 </p>
+
+
+                                <p  onClick={()=>setEmptyState(!emptyState)} 
+                                    className={
+                                        arrParroquiaState.length === 0 && emptyState === false
+                                        ? 'no-encontrado' 
+                                        : 'd-none'
+                                    }>
+                                        No Encontrado ✘
+                                </p>
                                  
-                              
 
-                                {/*<p   onClick={} className={arrParroquiaState.length === 0 ? 'd-none' : 'no-encontrado'}}>No Encontrado ✘</p>*/}
-
-                                        {/* {allUsers.map((el, i)=>(<>
-                                            <p key={i+'koko'}>{el.id}</p>
-                                            <img src={el.img64} />
-                                    </>))}*/}
-
-                                
-                                       
-
-                                        <div className={emptyState ? 'd-none' : 'w-100'} >
-                                            {arrParroquiaState.map((el, i)=>(
-                                                <div key={i}>
+                                <div className={emptyState ? 'd-none' : 'w-100'} >
+                                        {arrParroquiaState.map((el, i)=>(
+                                            <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombre}</p>
                                                     <p><span>Fecha:</span> {el.fecha}</p>
                                                     <p><span>Documento:</span> {el.fileName}</p>
                                                     <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
                                                     <hr />
-                                                </div> 
-                                            ))}
-                                        </div> 
-
-
-                                     
+                                            </div> 
+                                        ))}
+                                </div> 
 
                             </div>
 
