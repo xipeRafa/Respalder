@@ -759,17 +759,16 @@ img{width: 100%;}
   }
 
   input[type="file"]{
-    
     padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
     background-color: #fff;
     border: 1px solid #d1d1d1;
     border-radius: 2px;
     box-shadow: none;
     box-sizing: border-box;
-    margin: 1em 3em;
+
     color: #666;
     font-weight: 300;
-
+    text-transform:capitalize;
   }
 
   @media(max-width:930px){
@@ -780,14 +779,18 @@ img{width: 100%;}
 
   input::file-selector-button {
     height: 25px;
-    width: 0;
+    width: 140px;
     padding: 0;
     font-weight: 0;
     border: thin solid transparent;
     border-radius: 3px;
 /*    margin-right: 20px;*/
-    background-color: #fff;
-
+    background-color: rgba(55, 89, 122, .2);
+    color:#666;
+    text-transform:capitalize;
+    margin-right: 10px;
+    margin-left: 2px;
+    cursor: pointer;
   }
 
   .fileImg {

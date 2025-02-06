@@ -73,7 +73,7 @@ export default function Navbar() {
         {/*<a href='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>*/}
         {/*<a href='#' className='red'>{new Date().toLocaleString().slice(0,9)}</a>*/}
 
-        <NavLink className='red' style={{cursorPointer:'none'}}>{nowDate()}</NavLink>
+        <NavLink className='red' style={{cursor:'none'}}>{nowDate()}</NavLink>
        
         
      
