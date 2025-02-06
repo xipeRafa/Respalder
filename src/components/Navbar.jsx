@@ -7,19 +7,19 @@ import { useState } from "react";
 
 export default function Navbar() {
 
-  const [isActive, setIsActive]=useState(true)
+    const [isActive, setIsActive]=useState(true)
 
-  const windowWidth = window.innerWidth;
+    const windowWidth = window.innerWidth;
 
-  const InWidth = () => {
-    if(windowWidth<999){
-      setIsActive(true)
+    const InWidth = () => {
+        if(windowWidth<999){
+            setIsActive(true)
+        }
     }
-  }
 
-// navBar-hamburger-menu
-// navBar2-hamburger-menu  
-// navBar3-hamburger-menu3  
+    // navBar-hamburger-menu
+    // navBar2-hamburger-menu  
+    // navBar3-hamburger-menu3  
 
     const nowDate =()=> {   // 'Viernes, 16 de Agosto de 2024'
 
@@ -45,7 +45,7 @@ export default function Navbar() {
 
 <div className="navBar3">
 
-{  localStorage.getItem('userEmailLS') !== null &&<>
+{  localStorage.getItem('userEmailLS') !== null && <>
 
     <div onClick={()=>setIsActive(!isActive)}  className="hamburger" >
 
@@ -69,9 +69,11 @@ export default function Navbar() {
 
         <NavLink to="/Respalder/matrimonios"> Matrimonios</NavLink>
         <NavLink to="/Respalder/defunciones"> Defunciones</NavLink>
+
         {/*<a href='#' className='red'> {localStorage.getItem('userEmailLS').split('g')[0]}</a>*/}
         {/*<a href='#' className='red'>{new Date().toLocaleString().slice(0,9)}</a>*/}
-        <NavLink to="/Respalder/Publicidad" className='red'>{nowDate()}</NavLink>
+
+        <NavLink className='red' style={{cursorPointer:'none'}}>{nowDate()}</NavLink>
        
         
      

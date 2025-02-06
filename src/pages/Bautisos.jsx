@@ -11,12 +11,11 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
         const[objectState, setObjectState]=useState({
-                nombre:'',
-                fecha:''
+                nombre:''
         })
 
 
-        const { nombre, fecha } = objectState
+        const { nombre } = objectState
 
 
         const handlerObjectsState =({target})=>{
@@ -87,8 +86,9 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
         useEffect(() => {
-                setObjectState({nombre:'', fecha:''})
+                setObjectState({nombre:''})
                 setFileState('')
+                localStorage.buttons = ''
         }, [finderCollection]);
 
  
@@ -212,17 +212,17 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                     return
             }
 
-            if(fecha.length <= 0){
-                    setEmptyDate('La Fecha esta Vacia')
-                    return
-            }
+            // if(fecha.length <= 0){
+            //         setEmptyDate('La Fecha esta Vacia')
+            //         return
+            // }
 
             if(fileState === ''){
                     setEmptyFile('No Hay Archivo Seleccionado')
                     return
             }
 
-            insertDataInIndexedDb()
+            //insertDataInIndexedDb()
 
             if(confirm(`Quiere Guardar este Documento de ${finderCollection}?`)) {
                     objectState.email = localStorage.userEmailLS
@@ -233,7 +233,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                     },2000)
             }
             
-            setObjectState({nombre:'', fecha:''})
+            setObjectState({nombre:''})
             setFileState('')
 
         }
@@ -287,9 +287,16 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
             setNameFinder(value.replace(/\b[a-z]/g,c=>c.toUpperCase()))
         }
         
+        const[stateButtons, setStateButtons]=useState('')
 
+        const handlerStateButtons=(v)=>{
+                setStateButtons(v)
+                setObjectState({nombre:''})
+                setNameFinder('') 
+                localStorage.buttons = 'hello'
+        }
 
-        const[stateButtons, setStateButtons]=useState(true)
+        
 
 
  
@@ -298,14 +305,15 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
             {localStorage.getItem('userEmailLS') !== null &&<>
 
                 <div className='ButtonsNuevoBuscar'>
-                        <button onClick={()=>setStateButtons(true)}>  Nuevo {finderCollection} </button>
-                        <button onClick={()=>setStateButtons(false)}> Buscar  {/*<span className='lupita'>⌕</span>*/} </button>
+                        <button onClick={()=>handlerStateButtons(true)}>  Nuevo {finderCollection} </button>
+                        <button onClick={()=>handlerStateButtons(false)}>  {finderCollection} <span className='lupita'>⌕</span> </button>
                 </div> 
 
 
 
 
                 {
+                    localStorage.buttons !== '' ?
                     stateButtons ? 
                                    
                                 <div className='formInfoToSave'>
@@ -313,16 +321,19 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                     <p>Respaldar Acta de {finderCollection}</p> 
 
                                     <div className='empty'>{emptyName}</div>
-                                    <input type="text" name='nombre' placeholder='Nombre...' value={nombre} onChange={(e)=>handlerObjectsState(e)} />
+                                    <input type="text" name='nombre' placeholder='Nombre Completo' value={nombre} onChange={(e)=>handlerObjectsState(e)} />
 
-                                    <div className='empty'>{emptyDate}</div>
+                                   {/* <div className='empty'>{emptyDate}</div>
                                     <input type="date" className='dateInput' name='fecha' value={fecha} onChange={(e)=>handlerObjectsState(e)} />
-
+*/}
 
                                     {/*<label for="avatar">Choose a profile picture:</label>*/}
 
                                     <div className='empty'>{emptyFile}</div>
-                                    <input className='fileImg' type="file" onChange={(e)=>onResize(e)}  />
+                                    {/*<input className='fileImg' type="file" onChange={(e)=>onResize(e)}  />*/}
+
+                                    <input className='fileImg' type="file" onChange={(e)=>handlerGetFile(e)}  />
+
 
                                      {/*<img src={localStorage.urll} />*/}
                                     <button className='button-primary' onClick={submit}>
@@ -339,7 +350,42 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -347,9 +393,11 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                             <div className='formInfoToFind'>
 
                                 <div>
-                                    <label htmlFor="avatar1">Buscar {finderCollection} con Nombre:</label>
+                                    <label htmlFor="avatar1">Buscar Acta De {finderCollection} Con Nombre</label>
+
                                     <input type="search"  id='avatar1' className='w-80' value={nameFinder}
-                                            onChange={(event)=>handlerNameFinder(event)} placeholder='Nombre Completo...'/>
+                                            onChange={(event)=>handlerNameFinder(event)} placeholder='Escribir Nombre Completo'/>
+
                                     <button className='btn-buscar button-primary' onClick={buscarEnFirebase}> <span className='lupita'>⌕</span></button>
                                 </div>
 
@@ -379,7 +427,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                             <div key={i}>
                                                     <hr />
                                                     <p><span>Nombre:</span> {el.nombre}</p>
-                                                    <p><span>Fecha:</span> {el.fecha}</p>
+                                                    {/*<p><span>Fecha:</span> {el.fecha}</p>*/}
                                                     <p><span>Documento:</span> {el.fileName}</p>
                                                     <a className='doc' href={el.fileUrl} target='_blanck'> Abrir Documento</a>
                                                     <hr />
@@ -387,9 +435,9 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                                         ))}
                                 </div> 
 
-                            </div>
-
-                }
+                            </div> : ''
+                        }
+                
                 </>}
             </>
     );

@@ -32,8 +32,8 @@ box-shadow: rgba(33, 67, 100, .3) 0px -50px 36px -28px inset;}
 
 
 .formInfoToSave>p{
-	font-weight: 100;
-	color: #555;
+	font-weight: 500;
+	color: #333;
 	padding-left: 0;
 }
 
@@ -59,8 +59,8 @@ box-shadow: rgba(33, 67, 100, .3) 0px -50px 36px -28px inset;}
 }
 
 label{
-	color: #444;
-	font-weight: 100!important;
+	font-weight: 500!important;
+	color: #333!important;
 	padding-left: 0;
 }
 

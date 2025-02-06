@@ -53,7 +53,8 @@ export default function App() {
 
 
 
-    let finderCollection = capitalizarPrimeraLetra(fireBaseCollection || 'a') //queryParams
+// console.log(fireBaseCollection)
+    let finderCollection = capitalizarPrimeraLetra(fireBaseCollection) //queryParams
 
 
     const [finderState, setFinderState]=useState('')
@@ -64,7 +65,7 @@ export default function App() {
     const [arrParroquiaState, setArrParroquiaState] = useState([])
     const [getArr, setGetArr] = useState(false)
 
-console.log(arrParroquiaState)
+// console.log(arrParroquiaState)
 
 
     useEffect(() => {
@@ -99,7 +100,7 @@ console.log(arrParroquiaState)
     const postFile = (selectedFile, postBody) => {
 console.log(selectedFile)
 
-        const postCollection = collection(firestoreDB, fireBaseCollection || 'bautismos');
+        const postCollection = collection(firestoreDB, fireBaseCollection);
 
         const filesFolderRef = ref(storageDocs, `${fireBaseCollection}-Files/${Date.now()}/${selectedFile?.name}`)
 
@@ -126,8 +127,8 @@ console.log(selectedFile)
 
     const saveCat = (postBody) => {
 
-        delete postBody.password
-        delete postBody.name
+        // delete postBody.password
+        // delete postBody.name
 
         const postCollectionCat = collection(firestoreDB, 'cat');
 
@@ -165,13 +166,14 @@ console.log(selectedFile)
             <Routes>
 
                 <Route path="/Respalder/" element={<MiParroquia saveCat={saveCat}/>} />
-                <Route path="/Respalder/publicidad" element={<Publicidad />} />
+                {/*<Route path="/Respalder/publicidad" element={<Publicidad />} />*/}
 
                 <Route path="*"  element={ 
 
                     location.pathname !== '/Respalder/' && localStorage.getItem('userEmailLS') !== null &&
+
                         <Bautisos finderCollection={finderCollection} finderFireBase={finderFireBase} 
-                            postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr}
+                            postFile={postFile} arrParroquiaState={arrParroquiaState} setGetArr={setGetArr} getArr={getArr} 
                         />
 
                 }/>
