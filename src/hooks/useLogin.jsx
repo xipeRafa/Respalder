@@ -59,7 +59,10 @@ const useLogin = ( ) => {
               // Signed in
               const user = userCredential.user
               localStorage.setItem('userEmailLS', user.email)
-              location.reload()
+              setTimeout(()=>{
+                location.reload()
+            },2000)
+              
           })
           .catch((error) => {
             

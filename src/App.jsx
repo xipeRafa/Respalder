@@ -54,7 +54,7 @@ export default function App() {
 
 
 // console.log(fireBaseCollection)
-    let finderCollection = capitalizarPrimeraLetra(fireBaseCollection) //queryParams
+    let finderCollection = capitalizarPrimeraLetra(fireBaseCollection || 'bautismos') //queryParams
 
 
     const [finderState, setFinderState]=useState('')
@@ -126,8 +126,8 @@ console.log(selectedFile)
 
     const saveCat = (postBody) => {
 
-        // delete postBody.password
-        // delete postBody.name
+        delete postBody.password
+        delete postBody.name
 
         const postCollectionCat = collection(firestoreDB, 'cat');
 
@@ -165,6 +165,7 @@ console.log(selectedFile)
             <Routes>
 
                 <Route path="/Respalder/" element={<MiParroquia saveCat={saveCat}/>} />
+
                 {/*<Route path="/Respalder/publicidad" element={<Publicidad />} />*/}
 
                 <Route path="*"  element={ 
