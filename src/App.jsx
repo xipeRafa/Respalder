@@ -73,7 +73,6 @@ export default function App() {
         if(finderState !== ''){
 
             const data = query(collection(firestoreDB, fireBaseCollection || 'bautismos'),
-                    where('email', '==', localStorage.getItem('userEmailLS')),
                      where('nombre', '==', finderState.trim())
             )
 
