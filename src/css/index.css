@@ -765,7 +765,7 @@ img{width: 100%;}
     border-radius: 2px;
     box-shadow: none;
     box-sizing: border-box;
-
+     margin: 1em 3em;
     color: #666;
     font-weight: 300;
     text-transform:capitalize;

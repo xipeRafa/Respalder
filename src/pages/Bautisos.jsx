@@ -393,7 +393,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
                             <div className='formInfoToFind'>
 
                                 <div>
-                                    <label htmlFor="avatar1">Buscar Acta de {finderCollection} con Nombre</label>
+                                    <label className='mb-4' htmlFor="avatar1">Buscar Acta de {finderCollection} con Nombre:</label>
 
                                     <input type="search"  id='avatar1' className='w-80' value={nameFinder}
                                             onChange={(event)=>handlerNameFinder(event)} placeholder='Escribir Nombre Completo'/>
