@@ -225,7 +225,7 @@ export default function Bautisos({finderCollection, postFile, arrParroquiaState,
             //insertDataInIndexedDb()
 
             if(confirm(`Quiere Guardar este Documento de ${finderCollection}?`)) {
-                    objectState.email = localStorage.userEmailLS
+                    //objectState.email = localStorage.userEmailLS
                     objectState.nombre = nombre.trim()  
                     postFile(fileState, objectState)
                     setTimeout(()=>{
